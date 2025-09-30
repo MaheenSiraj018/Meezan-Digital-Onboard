@@ -1,0 +1,236 @@
+/* This file is where css selectors for the component go.
+   There will be hard coded properties and properties controlled by variables, for example
+
+   account-details .account-details-value-text {
+   color: var(--account-details-value-text-color);
+   display: inline-block;
+	 }
+*/
+.accountdetails-section {
+  padding: 10px 0;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 8px;
+  text-align: left;
+  font-family: sans-serif;
+}
+
+/* Account Tabs section */
+.account-type-tabs {
+  display: flex;
+  gap: 1px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.tab-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 10px;
+  background-color: rgb(223, 219, 219);
+  /* border: 2px solid #e9ecef; */
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  width: 70%;
+  transition: all 0.3s ease;
+  /* min-width: 120px; */
+  flex: 1;
+  max-width: 280px;
+}
+
+.tab-button:hover {
+  border-color: #701e7d;
+  box-shadow: 0 4px 12px rgba(112, 30, 125, 0.35);
+}
+
+
+
+/* Active state */
+.tab-button.active {
+  border-color: #701e7d;
+  background: #fcedfe; /* slight purple shade */
+  color: #701e7d;
+  border-bottom: 3px solid #701e7d; /* bottom border */
+}
+
+/* Icon container */
+/* Text styling */
+.tab-button{
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+}
+
+
+/* CNIC Section */
+.accno-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  margin-top: 15px;
+  margin-bottom: 6px;
+  
+}
+
+.accno-input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.acc-label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-family: sans-serif;
+}
+
+.acc-input {
+  padding: 15px;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: #f8f9fa;
+  width: 340px;
+}
+
+.acc-input:focus {
+  outline: none;
+  border-color: #7b2cbf;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(123, 44, 191, 0.1);
+}
+
+.acc-help-text {
+  font-size: 14px;
+  color: #6c757d;
+  margin-top: 8px;
+  font-family: sans-serif;
+
+}
+
+/* CNIC Helper Card */
+.acc-helper-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e9ecef;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: center;
+  height: 110%;
+  width: 90%;
+  margin-left: 0;
+}
+.acc-find{
+    font-size: 17px;
+    color:#701e7d;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+.acc-find-text{
+    font-size: 13px;
+    margin: 0;
+    padding: 12px;
+    font-family: sans-serif;
+}
+
+.acc-card-image {
+  position: relative;
+  padding: 2px;
+  background: white;
+}
+
+.acc-sample {
+  width: auto;
+  height: 80%;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* Navigation Buttons */
+.navigation-buttons-accdetails {
+  margin-top: 50px;
+  
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  gap:10px;
+}
+
+.btn {
+  padding: 12px 30px;
+  border-radius: 9px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  font-family: sans-serif;
+  margin: 3px;
+}
+
+.btn-primary {
+  background:#701e7d;
+  color: white;
+  width: 260px;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background:#701e7d;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(123, 44, 191, 0.3);
+}
+
+.btn-primary:disabled {
+  background: #dee2e6;
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: white;
+  color: #6c757d;
+  border: 2px solid #dee2e6;
+  width: 170px;
+
+}
+
+.btn-secondary:hover {
+  border-color:#701e7d;
+  color: #7b2cbf;
+}
+
+.error-message-acc {
+  height: 18px;              /* keeps layout fixed */
+  color: red;
+  font-size: 13px;
+  margin-top: 4px;
+  visibility: hidden;        /* hides text but keeps div space */
+  white-space: nowrap;       /* prevents wrapping of short errors */
+  transition: visibility 0.2s ease, opacity 0.2s ease;
+  opacity: 0;                /* invisible initially */
+}
+
+.error-message-acc.visible {
+  visibility: visible;       /* makes text visible */
+  opacity: 1;                /* fades in smoothly */
+}
+
+

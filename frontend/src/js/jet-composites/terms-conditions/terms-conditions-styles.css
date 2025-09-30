@@ -1,0 +1,145 @@
+/* This file is where css selectors for the component go.
+   There will be hard coded properties and properties controlled by variables, for example
+
+   terms-conditions .terms-conditions-value-text {
+   color: var(--terms-conditions-value-text-color);
+   display: inline-block;
+	 }
+*/
+.tandc-section {
+  padding: 5px 0;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 3px;
+  text-align: left;
+  font-family: sans-serif;
+}
+
+
+/* CNIC Section */
+.terms-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 70px;
+  margin-top: 15px;
+  margin-bottom: 6px;
+  
+}
+
+.subtitle {
+    color: var(--gray-text);
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.terms-text {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #333;
+    /* max-height: 350px;  */
+    overflow-y: auto;
+    padding-right: 15px;
+}
+.notice{
+  margin: 0;
+  padding: 0;
+}
+.terms-text p {
+    margin-bottom: 15px;
+    margin: 0;
+}
+.access-notice{
+    margin-bottom: 20px;
+    padding-bottom: 13px;
+}
+
+.terms-text strong {
+    color: #000;
+}
+
+/* Navigation Buttons */
+.navigation-buttons {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 12px 30px;
+  border-radius: 9px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  font-family: sans-serif;
+  margin: 3px;
+}
+
+.btn-primary {
+  background:#701e7d;
+  color: white;
+  width: 260px;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background:#701e7d;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(123, 44, 191, 0.3);
+}
+
+.btn-primary:disabled {
+  background: #dee2e6;
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: white;
+  color: #6c757d;
+  border: 2px solid #dee2e6;
+  width: 170px;
+
+}
+
+.btn-secondary:hover {
+  border-color:#701e7d;
+  color: #7b2cbf;
+}
+
+/* Login Link */
+.login-link-section {
+  text-align: right;
+  padding-top: 2px;
+  padding-right: 10px;
+  margin: 0;
+}
+
+.login-link-section p {
+  font-size: 15px;
+  color: white;
+}
+
+.login-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}
+
+
+

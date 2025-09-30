@@ -1,0 +1,124 @@
+<!--
+  Copyright (c) 2015, 2025, Oracle and/or its affiliates.
+  Licensed under The Universal Permissive License (UPL), Version 1.0
+  as shown at https://oss.oracle.com/licenses/upl/
+
+-->
+
+<!-- views/account.html -->
+<div class="account-section" id="div1">
+  <!-- Section Title -->
+  <h2 class="section-title">Select Account Type</h2>
+
+  <!-- Section Tabs (Account Types) -->
+  <div class="account-type-tabs">
+    <button class="tab-button-acc" data-bind="click: showIndividual, css: { active: selectedView() === 'individual' }">
+      <!-- data-bind="click: () => selectTab('individual')" -->
+      <div class="tab-icon">
+        <img src="css/images/Individual-Icon-Unfilled.svg" class="icon default" alt="Individual">
+        <img src="css/images/Individual-Icon-Filled.svg" class="icon active" alt="Individual active">
+      </div>
+      <span>Individual</span>
+    </button>
+
+    <button class="tab-button-acc" data-bind="click: showSoleProp, css: { active: selectedView() === 'sole' }">
+      <!-- data-bind="click: () => selectTab('soleProprietor')" -->
+      <div class="tab-icon">
+        <img src="css\images\person_apron_27dp_999999_FILL0_wght400_GRAD0_opsz24.svg" class="icon default"
+          alt="Sole Proprietor">
+        <img src="css\images\person_apron_24dp_701E7D_FILL0_wght400_GRAD0_opsz24.svg" class="icon active"
+          alt="Sole Proprietor active">
+      </div>
+      <span>Sole Proprietor</span>
+    </button>
+
+    <button class="tab-button-acc" data-bind="click: showDebitCard, css: { active: selectedView() === 'debit' }">
+      <div class="tab-icon">
+        <img src="css\images\credit_card_24dp_999999_FILL0_wght400_GRAD0_opsz24.svg" class="icon default"
+          alt="Debit Card">
+        <img src="css\images\credit_card_24dp_701E7D_FILL0_wght400_GRAD0_opsz24.svg" class="icon active"
+          alt="Debit Card active">
+      </div>
+      <span>Debit Card</span>
+    </button>
+
+    <button class="tab-button-acc" data-bind="click: showSmartWallet, css: { active: selectedView() === 'wallet' }">
+      <div class="tab-icon">
+        <img src="css\images\account_balance_wallet_24dp_B7B7B7_FILL0_wght400_GRAD0_opsz24.svg" class="icon default"
+          alt="Smart Wallet">
+        <img src="css\images\account_balance_wallet_24dp_701E7D_FILL0_wght400_GRAD0_opsz24.svg" class="icon active"
+          alt="Smart Wallet active">
+      </div>
+      <span>Smart Wallet</span>
+    </button>
+
+    <button class="tab-button-acc"
+      data-bind="click: showForeignNational, css: { active: selectedView() === 'foreign' }">
+      <div class="tab-icon">
+        <img src="css/images/Foreign-National-Icon-Unfilled.svg" class="icon default" alt="Foreign National">
+        <img src="css/images/Foreign-National-Icon-Filled.svg" class="icon active" alt="Foreign National active">
+      </div>
+      <span>Foreign National</span>
+    </button>
+
+
+
+    <!-- Individual Section -->
+
+    <div class="cnic-section" data-bind="if: selectedView() === 'individual'">
+      <div class="cnic-input-container">
+        <label for="cnicInput" class="cnic-label1">CNIC Number</label>
+        <!-- <input type="text" id="cnicInput" class="cnic-input" placeholder="XXXXX-XXXXXXX-X" maxlength="15"> -->
+        <input type="text" id="cnicInput" class="cnic-input" placeholder="XXXXX-XXXXXXX-X" maxlength="15"
+          data-bind="value: cnicNumber, event: { input: formatCNIC }, valueUpdate: 'afterkeydown'">
+
+        <!-- Error message div -->
+        <div class="error-message-cnic" data-bind="text: cnicError, css: { visible: cnicError }"></div>
+
+        <p class="cnic-help-text">Please enter your 13-digit CNIC Number</p>
+
+        <div class="navigation-buttons-acc">
+          <button type="button" class="btn btn-secondary">Back</button>
+          <button type="button" class="btn btn-primary"
+            data-bind="click: validateAndNext, enable: isCNICValid">Next</button>
+        </div>
+      </div>
+
+      <!-- CNIC Helper Card -->
+      <div class="cnic-helper-card">
+        <img src="../../css/images/nic.svg" alt="CNIC Sample" class="cnic-sample">
+        <div>
+          <h3 class="cnic-find">Find your CNIC Identity Number</h3>
+          <p class="cnic-find-text">Permanent citizens of Pakistan can find their CNIC Identity Number on their Identity
+            Card issued by NADRA.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div
+      data-bind="if: selectedView() === 'sole' || selectedView() === 'debit' || selectedView() === 'wallet' || selectedView() === 'foreign'"
+      class="basic-section">
+      <!-- Put Basic Component HTML here -->
+      <div class="basic-head">
+        <h3><strong data-bind="text: activeTabName"></strong> Section is active</h3>
+        <div class="navigation-buttons-acc">
+          <button type="button" class="btn btn-secondary">Back</button>
+          <button type="button" class="btn btn-primary" data-bind="click: goToDetails">Next</button>
+        </div>
+      </div>
+
+
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+</div>

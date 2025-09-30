@@ -1,0 +1,80 @@
+<!--
+  Copyright (c) 2015, 2025, Oracle and/or its affiliates.
+  Licensed under The Universal Permissive License (UPL), Version 1.0
+  as shown at https://oss.oracle.com/licenses/upl/
+
+-->
+<!-- <link rel="stylesheet" href="css/accountdetails.css"> -->
+
+<!-- views/account.html -->
+<div class="accountdetails-section" id="div1">
+
+
+    <!-- AccNO Input Section -->
+    <div class="accno-section">
+        <div class="accno-input-container">
+
+            <!-- Section Title -->
+            <h2 class="section-title">Enter Account Details</h2>
+
+            <!-- Section Tabs (Account Types) -->
+            <div class="account-type-tabs">
+                <button class="tab-button" data-bind="click: showAccNo, css: { active: selectedView() === 'accno' }">
+                    Account Number
+                </button>
+
+                <button class="tab-button" data-bind="click: showIBAN, css: { active: selectedView() === 'iban' }">
+                    IBAN
+                </button>
+            </div>
+
+            <div data-bind="if: selectedView() === 'accno'">
+                <label for="accInput" class="acc-label">Account Number</label>
+                <br>
+                <!-- <input type="text" id="accInput" class="acc-input" placeholder="XXXXX-XXXXXXXXX" maxlength="15"> -->
+                <input type="text" id="accInput" class="acc-input" placeholder="XXXXX-XXXXXXXXX" maxlength="15"
+                    data-bind="value: accountNumber, event: { input: formatAccountNo }, valueUpdate: 'afterkeydown'">
+
+                <!-- Error message div -->
+                <div class="error-message-acc" data-bind="text: accError, css: { visible: accError }"></div>
+
+                <p class="acc-help-text">Please enter your 14-digit Account Number</p>
+
+                <div class="navigation-buttons-accdetails">
+                    <button type="button" class="btn btn-secondary" data-bind="click: goBacktoAccount">Back</button>
+                    <button type="button" class="btn btn-primary"
+                        data-bind="click: validateAndNextAcc, enable: isAccValid">Next</button>
+                </div>
+            </div>
+
+            <div data-bind="if: selectedView() === 'iban'" class="iban-section">
+                <!-- Put Basic Component HTML here -->
+                <div class="iban-head">
+                    <h3>IBAN Section is active</h3>
+                    <div class="navigation-buttons-accdetails">
+                        <button type="button" class="btn btn-secondary" data-bind="click: goBacktoAccount">Back</button>
+                        <button type="button" class="btn btn-primary" data-bind="click: goToLoginDetails">Next</button>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <!-- Account Helper Card -->
+        <div class="acc-helper-card">
+            <img src="../../css/images/cheque.png" alt="Cheque Sample" class="cheque-sample">
+            <div>
+                <h3 class="acc-find">How to find your Account Number?</h3>
+                <p class="acc-find-text">The simplest way of finding your Account Number is to look for it on your
+                    cheque book</p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</div>

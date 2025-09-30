@@ -1,0 +1,129 @@
+/*
+    Document   : override
+    Created on : <date>
+    Author     : <author>
+    Description:
+        This is where any of your application specific styles should be included
+*/
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: sans-serif;
+}
+
+.maincontainer {
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(rgba(112, 30, 125, 0.8), rgba(82, 35, 118, 0.8)), 
+              url("../css/images/meezan_bg.jpg") no-repeat center center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 11px;
+}
+
+.logo {
+  width: 150px;
+  height: 50px;
+  margin-bottom: 20px;
+}
+
+.maincard {
+  background-color: white;
+  height: 82vh;
+  width: 75vw;
+  border: 2px solid #701e7d;
+  border-radius: 20px;
+  padding-top: 4px;
+  padding-left: 20px;
+}
+
+
+/* Progress Bar Styles */
+.progress-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.step-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e9ecef;
+  border: 2px solid #dee2e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1px;
+  transition: all 0.3s ease;
+}
+
+.progress-step.active .step-circle {
+  background: #701e7d;
+  border-color: #701e7d;
+  color: white;
+}
+
+.progress-step.completed .step-circle {
+  background: #28a745;
+  border-color: #28a745;
+  color: white;
+}
+
+.step-number {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.step-label {
+  font-size: 12px;
+  color: #6c757d;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.progress-step.active .step-label {
+  color: #701e7d;
+  font-weight: 600;
+}
+
+.progress-line {
+  width: 80px;
+  height: 2px;
+  background: #dee2e6;
+  margin: 0 2px 2px 1px;
+  transition: all 0.3s ease;
+}
+
+.progress-line.completed {
+  background: #28a745;
+}
+
+
+
+/* Content Area */
+.content-area {
+  min-height: 400px;
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+  .demo-appheader-avatar:before {
+      content:url("images/avatar_24px_2x.png");
+      -webkit-transform:translate(-25%, -25%) scale(0.5);
+      transform:translate(-25%, -25%) scale(0.5)
+  }
+}

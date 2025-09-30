@@ -1,0 +1,279 @@
+/* This file is where css selectors for the component go.
+   There will be hard coded properties and properties controlled by variables, for example
+
+   login-details2 .login-details2-value-text {
+   color: var(--login-details2-value-text-color);
+   display: inline-block;
+	 }
+*/
+.logindetails2-section {
+  padding: 5px 0;
+  margin-top: 0;
+  padding-left: 13px;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 8px;
+  text-align: left;
+  font-family: sans-serif;
+}
+
+.section-title .step-count {
+  font-size: 16px;
+  /* smaller font */
+  color: #666;
+  /* optional: make it lighter */
+  margin-left: 4px;
+  /* little spacing */
+}
+
+
+/* CNIC Section */
+.login2-section {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 120px;
+  margin-top: 15px;
+  margin-bottom: 6px;
+
+}
+
+.password-label {
+  font-size: 16px;
+  color: #2c3e50;
+  margin-bottom: 4px;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+.password-str {
+  font-size: 13px;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.strength {
+  color: green;
+}
+
+
+.custom-list {
+  list-style-type: disc;
+  /* default circular bullets */
+  padding-left: 20px;
+  /* space for bullets */
+}
+
+.custom-list li {
+  /* purple text */
+  font-size: 13px;
+  /* adjust size */
+  margin-bottom: 1px;
+  /* space between items */
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+.custom-list li::marker {
+  color: #701e7d;
+  /* purple bullet */
+  font-size: 22px;
+  /* bullet size */
+}
+
+.matchpass {
+  color: green;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+/* Navigation Buttons */
+.navigation-buttons {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 12px 30px;
+  border-radius: 9px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  font-family: sans-serif;
+  margin: 3px;
+}
+
+.btn-primary {
+  background: #701e7d;
+  color: white;
+  width: 260px;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #701e7d;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(123, 44, 191, 0.3);
+}
+
+.btn-primary:disabled {
+  background: #dee2e6;
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: white;
+  color: #6c757d;
+  border: 2px solid #dee2e6;
+  width: 170px;
+
+}
+
+.btn-secondary:hover {
+  border-color: #701e7d;
+  color: #7b2cbf;
+}
+
+
+
+
+
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+/* OJET Input Password Styling */
+.oj-inputpassword {
+  flex: 1;
+}
+
+.oj-inputpassword .oj-inputpassword-input {
+  width: 83%;
+  height: 42px;
+  padding: 0 40px 0 8px;
+  border: 1px solid #d6d6d6;
+  border-radius: 8px;
+  font-size: 13px;
+  background-color: #ffffff;
+  color: #333;
+  transition: border-color 0.2s ease;
+}
+
+.oj-inputpassword .oj-inputpassword-input:focus {
+  outline: none;
+  border-color: #701e7d;
+  box-shadow: 0 0 0 1px #701e7d;
+}
+
+.oj-inputpassword .oj-inputpassword-input::placeholder {
+  color: #999;
+  letter-spacing: normal;
+}
+
+/* Show/Hide Button */
+.show-password-btn {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #701e7d;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 2px 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 2;
+}
+
+.show-password-btn:hover {
+  color: #701e7d;
+}
+
+/* Progress Bar Container */
+.progress-container {
+  /* margin: 2px; */
+  padding: 0;
+  padding-left: 0;
+  margin-left: 0;
+
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  display: flex;
+  gap: 2px;
+  margin: 8px;
+  margin-left: 0;
+  margin-bottom: 4px;
+}
+
+.progress-segment {
+  flex: 1;
+  height: 100%;
+  background-color: #e6e6e6;
+  border-radius: 1px;
+  transition: background-color 0.3s ease;
+}
+
+.progress-segment.filled {
+  background-color: green;
+}
+
+.progress-segment:first-child {
+  border-radius: 3px 1px 1px 3px;
+}
+
+.progress-segment:last-child {
+  border-radius: 1px 3px 3px 1px;
+}
+
+
+
+/* OJET Button Styling */
+.oj-button {
+  background: #f4f4f4;
+  border: 1px solid #d6d6d6;
+  color: #333;
+  padding: 6px 12px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  transition: all 0.2s ease;
+}
+
+.oj-button:hover {
+  background: #e6e6e6;
+  border-color: #bfbfbf;
+}
+
+.oj-button.oj-selected {
+  background: #0572ce;
+  border-color: #0572ce;
+  color: white;
+}

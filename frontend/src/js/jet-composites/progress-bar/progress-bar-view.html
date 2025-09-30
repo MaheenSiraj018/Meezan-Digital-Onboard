@@ -1,0 +1,35 @@
+<!--
+  Copyright (c) 2015, 2025, Oracle and/or its affiliates.
+  Licensed under The Universal Permissive License (UPL), Version 1.0
+  as shown at https://oss.oracle.com/licenses/upl/
+
+-->
+<div class="progress-container">
+    <div class="progress-bar" data-bind="foreach: steps">
+        <div class="progress-step">
+            <div class="step-circle-container">
+                <div class="step-circle" data-bind="
+  text: stepNumber,
+  css: {
+    'completed': status() === 'completed',
+    'active': status() === 'active'
+  }
+"></div>
+                <div class="circle-active-line" data-bind="css: { 'show': status() === 'active' }"></div>
+            </div>
+            <div class="step-content">
+                <div class="step-label" data-bind="
+                            text: label,
+                            css: {
+                                'completed': status() === 'completed',
+                                'active': status() === 'active'
+                            }
+                        "></div>
+            </div>
+            <!-- Connecting line between steps -->
+            <!-- ko if: $index() < ($parent.steps().length - 1) -->
+            <div class="connecting-line" data-bind="css: { 'completed': status() === 'completed' }"></div>
+            <!-- /ko -->
+        </div>
+    </div>
+</div>

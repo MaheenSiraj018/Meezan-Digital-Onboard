@@ -1,0 +1,128 @@
+.registration-success-content {
+  padding: 50px 40px;
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-wrapper {
+  max-width: 550px;
+  width: 100%;
+  text-align: center;
+}
+
+.success-icon {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scaleIn 0.5s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: translateX(-50%) scale(0);
+  }
+  to {
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+.success-title {
+  color: #701e7d;
+  font-size: 32px;
+  font-weight: bolder;
+  margin: 30px 0 10px 0;
+  line-height: 1.4;
+}
+
+.success-subtitle {
+  color: #666666;
+  font-size: 14px;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.account-details {
+  margin-bottom:30px;
+  text-align: left;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  text-align: center;
+  
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.detail-label {
+  color: #701e7d;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  /* padding-left:210px; */
+  text-align: center;
+
+}
+
+.detail-value {
+  color: #333333;
+  font-size: 18px;
+  font-weight: 500;
+  /* padding-left: 200px; */
+  text-align: center;
+
+
+}
+
+.continue-button {
+  width: 100%;
+  background: linear-gradient(135deg, #7b4397 0%, #701e7d 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 16px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(123, 67, 151, 0.3);
+}
+
+.continue-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(123, 67, 151, 0.4);
+}
+
+.continue-button:active {
+  transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .registration-success-content {
+    padding: 50px 25px 30px 25px;
+  }
+
+  .success-title {
+    font-size: 24px;
+  }
+
+  .success-subtitle {
+    font-size: 13px;
+  }
+
+  .detail-value {
+    font-size: 16px;
+  }
+}

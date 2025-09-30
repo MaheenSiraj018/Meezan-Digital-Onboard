@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Meezan Digital OnBoarding</title>
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="icon" href="css/images/meezan_logo.png" type="image/x-icon" />
+</head>
+
+<body id="globalBody" class="oj-web-applayout-body">
+
+  <div class="maincontainer">
+    <!-- Logo -->
+    <div class="logo">
+      <img src="css/images/meezan-logo.svg" alt="Meezan Bank Logo">
+    </div>
+
+    <!-- Main Card with Common Elements -->
+    <div class="maincard">
+
+
+
+      <!-- Dynamic Content Area -->
+      <div class="content-area">
+        <oj-module role="main" class="oj-web-applayout-max-width oj-web-applayout-content"
+          config="[[moduleAdapter.koObservableConfig]]">
+        </oj-module>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/libs/require/require.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

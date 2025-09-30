@@ -1,0 +1,19 @@
+{
+  "success": {
+    "title": "You have successfully registered for online banking",
+    "subtitle": "Following are the details of your registered online banking account.",
+    "username": {
+      "label": "USERNAME",
+      "value": "03221234567"
+    },
+    "accountTitle": {
+      "label": "ACCOUNT TITLE",
+      "value": "ALI KHAN"
+    },
+    "accountNumber": {
+      "label": "ACCOUNT NUMBER",
+      "value": "01535403052290"
+    },
+    "buttonText": "Continue to Log In"
+  }
+}

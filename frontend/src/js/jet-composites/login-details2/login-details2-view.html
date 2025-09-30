@@ -1,0 +1,89 @@
+<!--
+  Copyright (c) 2015, 2025, Oracle and/or its affiliates.
+  Licensed under The Universal Permissive License (UPL), Version 1.0
+  as shown at https://oss.oracle.com/licenses/upl/
+
+-->
+
+<!-- views/account.html -->
+<div class="logindetails2-section" id="div1">
+
+
+    <!-- AccNO Input Section -->
+    <div class="login2-section">
+        <div class="password-input-container">
+
+            <!-- Section Title -->
+            <h2 class="section-title">
+                Create Login Details
+                <span class="step-count">(2/3)</span>
+            </h2>
+
+
+
+            <label for="passwordInput" class="password-label">Password</label>
+
+            <div class="password-container">
+                <div class="oj-inputpassword">
+                    <input id="passwordInput" class="oj-inputpassword-input" type="password"
+                        placeholder="Enter your password" data-bind="value: password, valueUpdate: 'input'" />
+                </div>
+                <button type="button" class="show-password-btn"
+                    data-bind="click: function() { togglePassword('passwordInput') }">SHOW</button>
+            </div>
+
+
+
+            <!-- Progress Bar -->
+            <div class=" form-group">
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar">
+                        <div class="progress-segment"></div>
+                        <div class="progress-segment"></div>
+                        <div class="progress-segment"></div>
+                        <div class="progress-segment"></div>
+                        <div class="progress-segment"></div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="password-str">
+                Password Strength:
+                <span class="strength" data-bind="text: passwordStrength, style: { color: strengthColor }"></span>
+            </p>
+
+            <ul class="custom-list">
+                <li>Password should be alphanumeric</li>
+                <li>Minimum password length should be 8</li>
+                <li>Special characters are optional</li>
+            </ul>
+
+            <label for="passwordInput" class="password-label">Re-enter Password</label>
+
+            <div class="password-container">
+                <div class="oj-inputpassword">
+                    <input id="repasswordInput" class="oj-inputpassword-input" type="password"
+                        placeholder="Re-enter your password" data-bind="value: rePassword, valueUpdate: 'input'" />
+                </div>
+                <button type="button" class="show-password-btn"
+                    data-bind="click: function() { togglePassword('repasswordInput') }">SHOW</button>
+
+
+            </div>
+
+            <p class="matchpass" data-bind="visible: passwordsMatch, text: matchMessage"></p>
+
+
+            <div class="navigation-buttons">
+                <button type="button" class="btn btn-secondary" data-bind="click: goBacktoLoginDetails">Back</button>
+                <button type="button" class="btn btn-primary"
+                    data-bind="click: goToTerms, enable: isFormValid">Next</button>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+</div>

@@ -1,0 +1,42 @@
+<div class="registration-success-content">
+  <!-- Success Icon -->
+  <div class="success-icon">
+    <svg width="80" height="80" viewBox="0 0 80 80">
+      <circle cx="40" cy="40" r="40" fill="#4CAF50"/>
+      <path d="M25 40 L35 50 L55 30" stroke="white" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+  <!-- Centered Content Wrapper -->
+  <div class="content-wrapper">
+    <!-- Success Title -->
+    <h1 class="success-title" data-bind="text: registrationData().success.title"></h1>
+    
+    <!-- Subtitle -->
+    <p class="success-subtitle" data-bind="text: registrationData().success.subtitle"></p>
+
+    <!-- Account Details -->
+    <div class="account-details">
+      <!-- Username -->
+      <div class="detail-item">
+        <span class="detail-label" data-bind="text: registrationData().success.username.label"></span>
+        <span class="detail-value" data-bind="text: registrationData().success.username.value"></span>
+      </div>
+
+      <!-- Account Title -->
+      <div class="detail-item">
+        <span class="detail-label" data-bind="text: registrationData().success.accountTitle.label"></span>
+        <span class="detail-value" data-bind="text: registrationData().success.accountTitle.value"></span>
+      </div>
+
+      <!-- Account Number -->
+      <div class="detail-item">
+        <span class="detail-label" data-bind="text: registrationData().success.accountNumber.label"></span>
+        <span class="detail-value" data-bind="text: registrationData().success.accountNumber.value"></span>
+      </div>
+    </div>
+
+    <!-- Continue Button -->
+    <button class="continue-button" data-bind="text: registrationData().success.buttonText, click: handleContinue"></button>
+  </div>
+</div>

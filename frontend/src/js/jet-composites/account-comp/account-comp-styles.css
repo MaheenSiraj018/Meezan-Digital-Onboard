@@ -1,0 +1,304 @@
+/* This file is where css selectors for the component go.
+   There will be hard coded properties and properties controlled by variables, for example
+
+   account-comp .account-comp-value-text {
+   color: var(--account-comp-value-text-color);
+   display: inline-block;
+	 }
+*/
+
+.account-section {
+  padding: 10px 0;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 8px;
+  text-align: left;
+  font-family: sans-serif;
+}
+
+/* Account Tabs section */
+.account-type-tabs {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.tab-button-acc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 10px;
+  background: white;
+  /* border: 2px solid #e9ecef; */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  flex: 1;
+  max-width: 140px;
+}
+
+.tab-button-acc:hover {
+  border-color: #701e7d;
+  box-shadow: 0 4px 12px rgba(112, 30, 125, 0.35);
+}
+
+.tab-button-acc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 10px;
+  background: white;
+  border: none; /* no default border */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  max-width: 140px;
+  flex: 1;
+  color: #6c757d; /* gray text by default */
+}
+
+/* Active state */
+.tab-button-acc.active {
+  border-color: #701e7d;
+  background: #fcedfe; /* slight purple shade */
+  color: #701e7d;
+  border-bottom: 3px solid #701e7d; /* bottom border */
+}
+
+/* Icon container */
+.tab-icon {
+  margin-bottom: 0px;
+}
+
+/* Default (outline) icon */
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Hide filled icon by default */
+.icon.active {
+  display: none;
+}
+
+/* When active: show filled, hide outline */
+.tab-button-acc.active .icon.active {
+  display: inline-block;
+}
+
+.tab-button-acc.active .icon.default {
+  display: none;
+}
+
+/* Text styling */
+.tab-button-acc span {
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+}
+
+
+
+/* This file is where css selectors for the component go.
+   There will be hard coded properties and properties controlled by variables, for example
+
+   ind-component .ind-component-value-text {
+   color: var(--ind-component-value-text-color);
+   display: inline-block;
+	 }
+*/
+/* This file is where css selectors for the component go.
+   There will be hard coded properties and properties controlled by variables, for example
+
+   individual-comp .individual-comp-value-text {
+   color: var(--individual-comp-value-text-color);
+   display: inline-block;
+	 }
+*/
+
+/* CNIC Section */
+.cnic-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 280px;
+  margin-top: 20px;
+  margin-bottom: 6px;
+  
+}
+
+.cnic-input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.cnic-label1 {
+  font-size: 16px;
+  font-weight: bolder;
+  color: #2c3e50;
+  margin-bottom: 8px;
+  font-family: sans-serif;
+  margin-top: 33px;
+}
+
+.cnic-input {
+  padding: 15px;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: #f8f9fa;
+}
+
+.cnic-input:focus {
+  outline: none;
+  border-color: #7b2cbf;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(123, 44, 191, 0.1);
+}
+
+.cnic-help-text {
+  font-size: 14px;
+  color: #6c757d;
+  margin-top: 8px;
+  font-family: sans-serif;
+}
+
+/* CNIC Helper Card */
+.cnic-helper-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e9ecef;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  margin-right: 20px;
+  width: 240px;
+  height: 230px;
+}
+.cnic-find{
+    font-size: 14px;
+    color:#701e7d;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+.cnic-find-text{
+    font-size: 11px;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.cnic-card-image {
+  position: relative;
+  padding: 2px;
+  background: white;
+}
+
+.cnic-sample {
+  width: 80%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Basic Section */
+.basic-section{
+display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 330px;
+  margin-top: 2px;
+  margin-bottom: 6px;}
+
+
+.section-head{
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navigation Buttons */
+.navigation-buttons-acc {
+  margin-top: 40px;
+  margin-right: 3px;
+  display: flex;
+  gap:10px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 12px 30px;
+  border-radius: 9px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  font-family: sans-serif;
+}
+
+.btn-primary {
+  background:#701e7d;
+  color: white;
+  width: 260px;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background:#701e7d;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(123, 44, 191, 0.3);
+}
+
+.btn-primary:disabled {
+  background: #dee2e6;
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: white;
+  color: #6c757d;
+  border: 2px solid #dee2e6;
+  width: 170px;
+
+}
+
+.btn-secondary:hover {
+  border-color:#701e7d;
+  color: #7b2cbf;
+}
+
+
+
+.error-message-cnic {
+  height: 18px;          /* fixes the height, preventing buttons from shifting */
+  color: red;
+  font-size: 13px;
+  margin-top: 4px;
+  visibility: hidden;    /* hides text but keeps space reserved */
+  white-space: nowrap;   /* prevents wrapping of short messages */
+}
+
+.error-message-cnic.visible {
+  visibility: visible;   /* shows text only when there’s an error */
+}
+
+
