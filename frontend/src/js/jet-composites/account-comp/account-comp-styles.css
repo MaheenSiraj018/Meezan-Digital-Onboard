@@ -1,11 +1,3 @@
-/* This file is where css selectors for the component go.
-   There will be hard coded properties and properties controlled by variables, for example
-
-   account-comp .account-comp-value-text {
-   color: var(--account-comp-value-text-color);
-   display: inline-block;
-	 }
-*/
 
 .account-section {
   padding: 10px 0;
@@ -14,7 +6,7 @@
 }
 
 .section-title {
-  font-size: 24px;
+  font-size: 25px;
   font-weight: 600;
   color: #2c3e50;
   margin-bottom: 8px;
@@ -37,7 +29,6 @@
   align-items: center;
   padding: 15px 10px;
   background: white;
-  /* border: 2px solid #e9ecef; */
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -58,22 +49,22 @@
   align-items: center;
   padding: 15px 10px;
   background: white;
-  border: none; /* no default border */
+  border: none; 
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
   min-width: 120px;
   max-width: 140px;
   flex: 1;
-  color: #6c757d; /* gray text by default */
+  color: #6c757d;
 }
 
 /* Active state */
 .tab-button-acc.active {
   border-color: #701e7d;
-  background: #fcedfe; /* slight purple shade */
+  background: #fcedfe; 
   color: #701e7d;
-  border-bottom: 3px solid #701e7d; /* bottom border */
+  border-bottom: 3px solid #701e7d;
 }
 
 /* Icon container */
@@ -103,29 +94,11 @@
 
 /* Text styling */
 .tab-button-acc span {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   text-align: center;
 }
 
-
-
-/* This file is where css selectors for the component go.
-   There will be hard coded properties and properties controlled by variables, for example
-
-   ind-component .ind-component-value-text {
-   color: var(--ind-component-value-text-color);
-   display: inline-block;
-	 }
-*/
-/* This file is where css selectors for the component go.
-   There will be hard coded properties and properties controlled by variables, for example
-
-   individual-comp .individual-comp-value-text {
-   color: var(--individual-comp-value-text-color);
-   display: inline-block;
-	 }
-*/
 
 /* CNIC Section */
 .cnic-section {
@@ -143,7 +116,7 @@
 }
 
 .cnic-label1 {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: bolder;
   color: #2c3e50;
   margin-bottom: 8px;
@@ -185,18 +158,18 @@
   text-align: center;
   padding: 10px;
   margin-right: 20px;
-  width: 240px;
-  height: 230px;
+  width: 80%;
+  height: 100%;
 }
 .cnic-find{
-    font-size: 14px;
+    font-size: 15px;
     color:#701e7d;
     margin: 0;
     padding: 0;
     font-family: sans-serif;
 }
 .cnic-find-text{
-    font-size: 11px;
+    font-size: 13px;
     margin: 0;
     padding: 0;
     font-family: sans-serif;
@@ -286,19 +259,17 @@ display: grid;
   color: #7b2cbf;
 }
 
-
-
 .error-message-cnic {
-  height: 18px;          /* fixes the height, preventing buttons from shifting */
+  height: 18px;          
   color: red;
   font-size: 13px;
   margin-top: 4px;
-  visibility: hidden;    /* hides text but keeps space reserved */
-  white-space: nowrap;   /* prevents wrapping of short messages */
+  visibility: hidden;   
+  white-space: nowrap;   
 }
 
 .error-message-cnic.visible {
-  visibility: visible;   /* shows text only when there’s an error */
+  visibility: visible;   
 }
 
 

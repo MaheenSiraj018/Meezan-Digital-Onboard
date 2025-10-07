@@ -20,14 +20,14 @@ define(
       self.isFormValid = ko.observable(false);
       self.passwordStrength = ko.observable('');
 
-      // ✅ Validation for Password Rules
+      // Validation for Password Rules
       self.isPasswordValid = ko.computed(function () {
         const pass = self.password();
         const regex = /^(?=.*[a-zA-Z])(?=.*[0-9])[A-Za-z0-9!@#$%^&*()_+=-]{8,}$/;
         return regex.test(pass);
       });
 
-      // ✅ Check if both passwords match
+      // Check if both passwords match
       self.password.subscribe(checkPasswordMatch);
       self.rePassword.subscribe(checkPasswordMatch);
 
@@ -46,12 +46,12 @@ define(
         }
       }
 
-      // ✅ Enable “Next” button only if form is valid
+      // Enable “Next” button only if form is valid
       self.isFormValid = ko.computed(function () {
         return self.isPasswordValid() && self.password() === self.rePassword();
       });
 
-      // ✅ Button Handlers
+      // Button Handlers
       self.goToTerms = function () {
         if (!self.isFormValid()) {
           alert("Please make sure your password meets all requirements and both match.");
@@ -64,7 +64,7 @@ define(
         checkPasswordMatch();
       });
 
-      // ✅ Function to evaluate strength
+      // Function to evaluate strength
       function evaluatePasswordStrength(password) {
         if (!password) {
           self.passwordStrength('');
@@ -92,7 +92,7 @@ define(
         updateProgressBar(strength);
       }
 
-      // ✅ Validation for Password Rules (still here)
+      // Validation for Password Rules (still here)
       self.isPasswordValid = ko.computed(function () {
         const pass = self.password();
         const regex = /^(?=.*[a-zA-Z])(?=.*[0-9])[A-Za-z0-9!@#$%^&*()_+=-]{8,}$/;
@@ -108,28 +108,26 @@ define(
       });
 
       function updateProgressBar(strength) {
-  const segments = document.querySelectorAll('#progressBar .progress-segment');
+        const segments = document.querySelectorAll('#progressBar .progress-segment-password');
 
-  // Always clear all first
-  segments.forEach(seg => seg.classList.remove('filled'));
+        // Always clear all first
+        segments.forEach(seg => seg.classList.remove('filled'));
 
-  // Handle completely empty input
-  if (!strength || strength.trim() === '') {
-    return; // leave progress bar empty
-  }
+        // Handle completely empty input
+        if (!strength || strength.trim() === '') {
+          return; // leave progress bar empty
+        }
 
-  let fillCount = 0;
+        let fillCount = 0;
 
-  if (strength === 'Weak') fillCount = 2;       // Start typing → 2 filled
-  else if (strength === 'Medium') fillCount = 3; // Medium → +1
-  else if (strength === 'Strong') fillCount = 5; // Strong → full
+        if (strength === 'Weak') fillCount = 2;       // Start typing → 2 filled
+        else if (strength === 'Medium') fillCount = 3; // Medium → +1
+        else if (strength === 'Strong') fillCount = 5; // Strong → full
 
-  for (let i = 0; i < fillCount; i++) {
-    segments[i].classList.add('filled');
-  }
-}
-
-
+        for (let i = 0; i < fillCount; i++) {
+          segments[i].classList.add('filled');
+        }
+      }
 
 
       self.goBacktoLoginDetails = function () {

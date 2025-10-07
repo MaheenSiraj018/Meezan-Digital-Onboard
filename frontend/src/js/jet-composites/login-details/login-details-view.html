@@ -23,7 +23,6 @@
 
 
             <label for="usernameInput" class="username-label">Username</label>
-            <!-- <input type="text" id="usernameInput" class="username-input" placeholder="03221234567" maxlength="15"> -->
             <div class="username-input-wrapper">
                 <input type="text" id="usernameInput" class="username-input" placeholder="Enter username"
                     data-bind="value: username, event: { input: validateUsername }, valueUpdate: 'afterkeydown'">
@@ -32,10 +31,9 @@
                 <span class="status-icon cross-icon" data-bind="visible: isUsernameInvalid">❌</span>
             </div>
 
-            <p class="username-status"
-   data-bind="text: usernameMessage,
+            <p class="username-status" data-bind="text: usernameMessage,
               css: { 'username-valid': isUsernameValid, 'username-invalid': isUsernameInvalid }">
-</p>
+            </p>
 
             <p class="username-cond">Your default username is your mobile number</p>
             <p class="username-cond">

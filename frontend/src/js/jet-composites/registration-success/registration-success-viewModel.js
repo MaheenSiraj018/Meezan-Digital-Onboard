@@ -36,10 +36,7 @@ define(['knockout', 'ojs/ojcore', 'ojs/ojknockout'],
       // Handle continue button click
       self.handleContinue = function() {
         console.log('Continue to Log In clicked');
-        // Add your navigation logic here
-        // For example: 
-        // oj.Router.rootInstance.go('login');
-        // or window.location.href = 'login.html';
+ 
       };
       
       // Optional: Method to update data dynamically

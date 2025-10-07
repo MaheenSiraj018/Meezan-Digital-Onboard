@@ -2,14 +2,12 @@ define(['knockout'], function (ko) {
   function ProgressBarViewModel(context) {
     const self = this;
 
-    // ✅ 1. Get current step from parent component or route param
+    // 1. Get current step from parent component or route param
     const current = context.properties.currentStep || 1;
-    console.log("✅ ProgressBar initialized with current step:", current);
-    console.log(context.properties.currentStep);
 
     self.currentStep = ko.observable(parseInt(current));
 
-    // ✅ 2. Define all labels for your 4 screens (you can customize names)
+    // 2. Define all labels for your 4 screens (you can customize names)
     const stepLabels = [
       'Account Type',
       'Account Details',
@@ -18,7 +16,7 @@ define(['knockout'], function (ko) {
       
     ];
 
-    // ✅ 3. Create array of step objects with observables
+    // 3. Create array of step objects with observables
     self.steps = ko.observableArray(
       stepLabels.map((label, index) => {
         const stepNumber = index + 1;
@@ -38,7 +36,7 @@ else if (stepNumber === self.currentStep()) status = 'active';
       })
     );
 
-    // ✅ 4. Whenever currentStep changes (e.g., route change), update all statuses
+    // 4. Whenever currentStep changes (e.g., route change), update all statuses
     self.currentStep.subscribe(function (newStep) {
       console.log("🔄 Updating step statuses to step:", newStep);
 
@@ -49,7 +47,7 @@ else if (stepNumber === self.currentStep()) status = 'active';
       });
     });
 
-    // ✅ 5. Debug
+    // 5. Debug
     console.log("🧾 Steps initialized:", self.steps());
   }
 

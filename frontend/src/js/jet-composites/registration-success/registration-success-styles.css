@@ -66,11 +66,10 @@
 
 .detail-label {
   color: #701e7d;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: bold;
   letter-spacing: 0.5px;
   margin-bottom: 8px;
-  /* padding-left:210px; */
   text-align: center;
 
 }
@@ -79,7 +78,6 @@
   color: #333333;
   font-size: 18px;
   font-weight: 500;
-  /* padding-left: 200px; */
   text-align: center;
 
 

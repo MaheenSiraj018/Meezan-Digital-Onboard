@@ -8,7 +8,7 @@
 define(
     ['knockout', 'ojL10n!./resources/nls/account-details-strings', 'ojs/ojcontext', 'ojs/ojknockout'], function (ko, componentStrings, Context) {
     
-    function ExampleComponentModel(context) {
+    function AccountDetailsComponentModel(context) {
         var self = this;
 
     self.selectedView = ko.observable('accno');
@@ -52,7 +52,7 @@ define(
           new CustomEvent('onBack', {bubbles: true})
         )
       }
-      // ✅ Account Number Observables and Validation
+      //Account Number Observables and Validation
 self.accountNumber = ko.observable('');
 self.accError = ko.observable('');
 
@@ -62,7 +62,7 @@ self.isAccValid = ko.computed(() => {
   return cleanAcc.length === 14 && /^[0-9]{14}$/.test(cleanAcc);
 });
 
-// ✅ Format Account Number (auto-dash, only digits)
+// Format Account Number (auto-dash, only digits)
 self.formatAccountNo = function(_, event) {
   let value = event.target.value.replace(/[^0-9]/g, ''); // allow only digits
   if (value.length > 14) value = value.slice(0, 14);     // restrict to 14 digits
@@ -84,16 +84,73 @@ self.formatAccountNo = function(_, event) {
   }
 };
 
+// Validation when Next is clicked
+// self.validateAndNextAcc = function() {
+//   const cleanAcc = self.accountNumber().replace(/-/g, '');
+//   const cnic = OnboardingStore.cnic;
+
+//   if (cleanAcc.length !== 14) {
+//     self.accError('Please enter a valid 14-digit Account Number.');
+//     return;
+//   }
+//   self.accError('');
+//   self.goToLoginDetails(); 
+// };
 // ✅ Validation when Next is clicked
-self.validateAndNextAcc = function() {
+self.validateAndNextAcc = function () {
   const cleanAcc = self.accountNumber().replace(/-/g, '');
-  if (cleanAcc.length !== 14) {
+  const cnic = OnboardingStore.cnic; // Retrieve CNIC from store
+
+  // Step 1️⃣: Frontend Validation
+  if (cleanAcc.length !== 14 || !/^[0-9]{14}$/.test(cleanAcc)) {
     self.accError('Please enter a valid 14-digit Account Number.');
     return;
   }
-  self.accError('');
-  self.goToLoginDetails(); // Proceed if valid
+
+  if (!cnic) {
+    self.accError('CNIC not found. Please go back and verify CNIC first.');
+    return;
+  }
+
+  self.accError(''); // clear frontend error
+
+  // Step 2️⃣: Call Verify Account API
+  axios.post('http://localhost:8080/api/onboarding/verify-account', { accountNumber: cleanAcc })
+    .then(accountRes => {
+      console.log("✅ Account Verified:", accountRes.data);
+
+      // Step 3️⃣: Call Verify User API
+      return axios.post('http://localhost:8080/api/onboarding/verify-user', {
+        cnic: cnic,
+        accountNumber: cleanAcc
+      });
+    })
+    .then(userRes => {
+      console.log("✅ CNIC + Account Matched:", userRes.data);
+
+      // Save Data Globally
+      OnboardingStore.accountNumber = self.accountNumber();
+      OnboardingStore.user = userRes.data;
+      OnboardingStore.userId = userRes.data.userId || null;
+
+      // Step 4️⃣: Proceed to Next Screen
+      self.goToLoginDetails();
+    })
+    .catch(error => {
+      console.error("❌ Error verifying account/user:", error);
+
+      // Handle specific error messages
+      if (error.response) {
+        const msg = typeof error.response.data === 'string'
+          ? error.response.data
+          : error.response.data.message || 'Verification failed';
+        self.accError(msg);
+      } else {
+        self.accError('Server error. Please try again.');
+      }
+    });
 };
+
 
         self.res = componentStrings['account-details'];
         // Example for parsing context properties
@@ -105,21 +162,7 @@ self.validateAndNextAcc = function() {
         self.busyResolve();
     };
     
-    //Lifecycle methods - uncomment and implement if necessary 
-    //ExampleComponentModel.prototype.activated = function(context){
-    //};
+ 
 
-    //ExampleComponentModel.prototype.connected = function(context){
-    //};
-
-    //ExampleComponentModel.prototype.bindingsApplied = function(context){
-    //};
-
-    //ExampleComponentModel.prototype.disconnected = function(context){
-    //};
-
-    //ExampleComponentModel.prototype.propertyChanged = function(context){
-    //};
-
-    return ExampleComponentModel;
+    return AccountDetailsComponentModel;
 });

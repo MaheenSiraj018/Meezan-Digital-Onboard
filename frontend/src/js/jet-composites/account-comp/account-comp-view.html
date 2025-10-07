@@ -13,7 +13,6 @@
   <!-- Section Tabs (Account Types) -->
   <div class="account-type-tabs">
     <button class="tab-button-acc" data-bind="click: showIndividual, css: { active: selectedView() === 'individual' }">
-      <!-- data-bind="click: () => selectTab('individual')" -->
       <div class="tab-icon">
         <img src="css/images/Individual-Icon-Unfilled.svg" class="icon default" alt="Individual">
         <img src="css/images/Individual-Icon-Filled.svg" class="icon active" alt="Individual active">
@@ -22,7 +21,6 @@
     </button>
 
     <button class="tab-button-acc" data-bind="click: showSoleProp, css: { active: selectedView() === 'sole' }">
-      <!-- data-bind="click: () => selectTab('soleProprietor')" -->
       <div class="tab-icon">
         <img src="css\images\person_apron_27dp_999999_FILL0_wght400_GRAD0_opsz24.svg" class="icon default"
           alt="Sole Proprietor">
@@ -68,7 +66,6 @@
     <div class="cnic-section" data-bind="if: selectedView() === 'individual'">
       <div class="cnic-input-container">
         <label for="cnicInput" class="cnic-label1">CNIC Number</label>
-        <!-- <input type="text" id="cnicInput" class="cnic-input" placeholder="XXXXX-XXXXXXX-X" maxlength="15"> -->
         <input type="text" id="cnicInput" class="cnic-input" placeholder="XXXXX-XXXXXXX-X" maxlength="15"
           data-bind="value: cnicNumber, event: { input: formatCNIC }, valueUpdate: 'afterkeydown'">
 
@@ -95,11 +92,9 @@
       </div>
     </div>
 
-
     <div
       data-bind="if: selectedView() === 'sole' || selectedView() === 'debit' || selectedView() === 'wallet' || selectedView() === 'foreign'"
       class="basic-section">
-      <!-- Put Basic Component HTML here -->
       <div class="basic-head">
         <h3><strong data-bind="text: activeTabName"></strong> Section is active</h3>
         <div class="navigation-buttons-acc">

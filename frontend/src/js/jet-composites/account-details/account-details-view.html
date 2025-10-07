@@ -31,7 +31,6 @@
             <div data-bind="if: selectedView() === 'accno'">
                 <label for="accInput" class="acc-label">Account Number</label>
                 <br>
-                <!-- <input type="text" id="accInput" class="acc-input" placeholder="XXXXX-XXXXXXXXX" maxlength="15"> -->
                 <input type="text" id="accInput" class="acc-input" placeholder="XXXXX-XXXXXXXXX" maxlength="15"
                     data-bind="value: accountNumber, event: { input: formatAccountNo }, valueUpdate: 'afterkeydown'">
 
@@ -48,7 +47,6 @@
             </div>
 
             <div data-bind="if: selectedView() === 'iban'" class="iban-section">
-                <!-- Put Basic Component HTML here -->
                 <div class="iban-head">
                     <h3>IBAN Section is active</h3>
                     <div class="navigation-buttons-accdetails">

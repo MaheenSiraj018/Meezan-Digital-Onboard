@@ -58,7 +58,6 @@
         "terms-conditions": "jet-composites\terms-conditions\loader.js",
         "login-link": "jet-composites\login-link\loader.js",
         "progress-bar": "jet-composites\progress-bar\loader.js",
-        "ind-component": "jet-composites\ind-component\loader.js",
         "registration-success": "jet-composites\registration-success\loader.js"
 
 

@@ -34,15 +34,14 @@
 
 .subtitle {
     color: var(--gray-text);
-    font-size: 13px;
+    font-size: 14px;
     margin-bottom: 10px;
 }
 
 .terms-text {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1.6;
     color: #333;
-    /* max-height: 350px;  */
     overflow-y: auto;
     padding-right: 15px;
 }
@@ -117,29 +116,3 @@
   border-color:#701e7d;
   color: #7b2cbf;
 }
-
-/* Login Link */
-.login-link-section {
-  text-align: right;
-  padding-top: 2px;
-  padding-right: 10px;
-  margin: 0;
-}
-
-.login-link-section p {
-  font-size: 15px;
-  color: white;
-}
-
-.login-link {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.login-link:hover {
-  text-decoration: underline;
-}
-
-
-

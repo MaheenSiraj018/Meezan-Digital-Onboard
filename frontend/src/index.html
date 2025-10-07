@@ -11,17 +11,14 @@
 <body id="globalBody" class="oj-web-applayout-body">
 
   <div class="maincontainer">
-    <!-- Logo -->
     <div class="logo">
       <img src="css/images/meezan-logo.svg" alt="Meezan Bank Logo">
     </div>
 
-    <!-- Main Card with Common Elements -->
     <div class="maincard">
 
 
 
-      <!-- Dynamic Content Area -->
       <div class="content-area">
         <oj-module role="main" class="oj-web-applayout-max-width oj-web-applayout-content"
           config="[[moduleAdapter.koObservableConfig]]">
@@ -29,9 +26,19 @@
       </div>
     </div>
   </div>
+<script>
+    window.OnboardingStore = {
+      cnic: null,
+      accountNumber: null,
+      user: null,
+      username: null,
+      userId: null
+    };
+  </script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-  <!-- Scripts -->
   <script src="js/libs/require/require.js"></script>
+
   <script src="js/main.js"></script>
 </body>
 

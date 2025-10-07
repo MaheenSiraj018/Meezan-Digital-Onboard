@@ -21,9 +21,9 @@
 }
 
 .section-title .step-count {
-  font-size: 16px;   /* smaller font */
-  color: #666;       /* optional: make it lighter */
-  margin-left: 4px;  /* little spacing */
+  font-size: 16px;   
+  color: #666;   
+  margin-left: 4px; 
 }
 
 
@@ -54,7 +54,7 @@
   padding: 15px;
   border: 2px solid #e9ecef;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 17px;
   transition: all 0.3s ease;
   background: #f8f9fa;
 }
@@ -67,14 +67,14 @@
 }
 
 .username-aval{
-    font-size: 15px;
+    font-size: 16px;
     color: green;
   font-weight: bold;
   margin-bottom: 0;
 }
 
 .username-cond{
-    font-size: 13px;
+    font-size: 14px;
     margin: 8px;
     padding: 0;
     margin-left: 0;
@@ -82,19 +82,19 @@
 }
 
 .custom-list {
-    list-style-type: disc;   /* default circular bullets */
-    padding-left: 20px;      /* space for bullets */
+    list-style-type: disc;   
+    padding-left: 20px;    
 }
-.custom-list li {         /* purple text */
-    font-size: 13px;         /* adjust size */
-    margin-bottom: 1px;      /* space between items */
+.custom-list li {        
+    font-size: 14px;      
+    margin-bottom: 1px;      
     position: relative;
     padding: 0;
     margin: 0;
 }
 .custom-list li::marker {
-    color:#701e7d;          /* purple bullet */
-    font-size: 22px;         /* bullet size */
+    color:#701e7d;       
+    font-size: 22px;       
 }
 
 /* Navigation Buttons */
@@ -163,7 +163,7 @@
 
 .username-input {
   width: 100%;
-  padding-right: 35px; /* space for icon inside */
+  padding-right: 35px;
   box-sizing: border-box;
 }
 
@@ -177,17 +177,17 @@
 }
 
 .tick-icon {
-  color: #28a745; /* green tick */
+  color: #28a745;
 }
 
 .cross-icon {
-  color: #dc3545; /* red cross */
+  color: #dc3545;
 }
 .username-status {
-  height: 18px; /* fixed height to prevent button movement */
+  height: 18px; 
   margin-top: 4px;
   font-size: 13px;
-  visibility: hidden; /* hides text but keeps space reserved */
+  visibility: hidden; 
 }
 
 .username-valid {

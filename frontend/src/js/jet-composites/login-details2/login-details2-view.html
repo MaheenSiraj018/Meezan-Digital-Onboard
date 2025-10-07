@@ -1,15 +1,7 @@
-<!--
-  Copyright (c) 2015, 2025, Oracle and/or its affiliates.
-  Licensed under The Universal Permissive License (UPL), Version 1.0
-  as shown at https://oss.oracle.com/licenses/upl/
-
--->
-
-<!-- views/account.html -->
 <div class="logindetails2-section" id="div1">
 
 
-    <!-- AccNO Input Section -->
+    <!-- Password Input Section -->
     <div class="login2-section">
         <div class="password-input-container">
 
@@ -33,16 +25,15 @@
             </div>
 
 
-
             <!-- Progress Bar -->
             <div class=" form-group">
-                <div class="progress-container">
-                    <div class="progress-bar" id="progressBar">
-                        <div class="progress-segment"></div>
-                        <div class="progress-segment"></div>
-                        <div class="progress-segment"></div>
-                        <div class="progress-segment"></div>
-                        <div class="progress-segment"></div>
+                <div class="progress-container-password">
+                    <div class="progress-bar-password" id="progressBar">
+                        <div class="progress-segment-password"></div>
+                        <div class="progress-segment-password"></div>
+                        <div class="progress-segment-password"></div>
+                        <div class="progress-segment-password"></div>
+                        <div class="progress-segment-password"></div>
                     </div>
                 </div>
             </div>
@@ -68,13 +59,11 @@
                 <button type="button" class="show-password-btn"
                     data-bind="click: function() { togglePassword('repasswordInput') }">SHOW</button>
 
-
             </div>
 
-            <p class="matchpass" data-bind="visible: passwordsMatch, text: matchMessage"></p>
+            <p class="matchpass" data-bind="text: matchMessage, css: { 'show-pass': passwordsMatch }"></p>
 
-
-            <div class="navigation-buttons">
+            <div class="navigation-buttons-password">
                 <button type="button" class="btn btn-secondary" data-bind="click: goBacktoLoginDetails">Back</button>
                 <button type="button" class="btn btn-primary"
                     data-bind="click: goToTerms, enable: isFormValid">Next</button>
