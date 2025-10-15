@@ -11,14 +11,12 @@ define(
     function LoginLinkModel(context) {
         var self = this;
         
-        //At the start of your viewModel constructor
         var busyContext = Context.getContext(context.element).getBusyContext();
         var options = {"description": "Web Component Startup - Waiting for data"};
         self.busyResolve = busyContext.addBusyState(options);
 
         self.composite = context.element;
 
-        //Example observable
         self.messageText = ko.observable('Hello from login-link');
         self.properties = context.properties;
         console.log(self.properties);

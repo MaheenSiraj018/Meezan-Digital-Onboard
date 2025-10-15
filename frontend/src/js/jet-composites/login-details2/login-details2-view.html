@@ -1,6 +1,5 @@
 <div class="logindetails2-section" id="div1">
 
-
     <!-- Password Input Section -->
     <div class="login2-section">
         <div class="password-input-container">
@@ -10,20 +9,15 @@
                 Create Login Details
                 <span class="step-count">(2/3)</span>
             </h2>
-
-
-
             <label for="passwordInput" class="password-label">Password</label>
-
             <div class="password-container">
                 <div class="oj-inputpassword">
                     <input id="passwordInput" class="oj-inputpassword-input" type="password"
                         placeholder="Enter your password" data-bind="value: password, valueUpdate: 'input'" />
                 </div>
-                <button type="button" class="show-password-btn"
-                    data-bind="click: function() { togglePassword('passwordInput') }">SHOW</button>
+                <button type="button" id="passwordBtn" class="show-password-btn"
+                    data-bind="click: function() { togglePassword('passwordInput', 'passwordBtn') }">SHOW</button>
             </div>
-
 
             <!-- Progress Bar -->
             <div class=" form-group">
@@ -56,8 +50,8 @@
                     <input id="repasswordInput" class="oj-inputpassword-input" type="password"
                         placeholder="Re-enter your password" data-bind="value: rePassword, valueUpdate: 'input'" />
                 </div>
-                <button type="button" class="show-password-btn"
-                    data-bind="click: function() { togglePassword('repasswordInput') }">SHOW</button>
+                <button id="rePasswordBtn" type="button" class="show-password-btn"
+  data-bind="click: function() { togglePassword('repasswordInput', 'rePasswordBtn') }">SHOW</button>
 
             </div>
 
@@ -71,8 +65,4 @@
         </div>
 
     </div>
-
-
-
-
 </div>

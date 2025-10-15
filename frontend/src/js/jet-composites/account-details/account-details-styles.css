@@ -12,7 +12,6 @@
   font-family: sans-serif;
 }
 
-/* Account Tabs section */
 .account-type-tabs {
   display: flex;
   gap: 1px;
@@ -42,8 +41,6 @@
 }
 
 
-
-/* Active state */
 .tab-button.active {
   border-color: #701e7d;
   background: #fcedfe; 
@@ -51,7 +48,6 @@
   border-bottom: 3px solid #701e7d;
 }
 
-/* Text styling */
 .tab-button{
   font-size: 13px;
   font-weight: 500;
@@ -59,7 +55,6 @@
 }
 
 
-/* CNIC Section */
 .accno-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -107,7 +102,6 @@
 
 }
 
-/* CNIC Helper Card */
 .acc-helper-card {
   background: white;
   border-radius: 12px;
@@ -116,8 +110,8 @@
   align-items: center;
   justify-content: flex-end;
   text-align: center;
-  height: 110%;
-  width: 80%;
+  height: 112%;
+  width: 90%;
   margin-left: 0;
 }
 .acc-find{
@@ -149,7 +143,6 @@
 
 
 
-/* Navigation Buttons */
 .navigation-buttons-accdetails {
   margin-top: 50px;
   
@@ -179,6 +172,8 @@
 .btn-primary {
   background:#701e7d;
   color: white;
+  font-weight: bold;
+
   width: 260px;
 }
 
@@ -196,7 +191,8 @@
 
 .btn-secondary {
   background: white;
-  color: #6c757d;
+  color: #701e7d;
+  font-weight: bold;
   border: 2px solid #dee2e6;
   width: 170px;
 
@@ -204,7 +200,6 @@
 
 .btn-secondary:hover {
   border-color:#701e7d;
-  color: #7b2cbf;
 }
 
 .error-message-acc {

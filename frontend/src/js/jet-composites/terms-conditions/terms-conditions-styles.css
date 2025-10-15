@@ -90,6 +90,8 @@
   background:#701e7d;
   color: white;
   width: 260px;
+  font-weight: bold;
+
 }
 
 .btn-primary:hover:not(:disabled) {
@@ -106,7 +108,8 @@
 
 .btn-secondary {
   background: white;
-  color: #6c757d;
+  color: #701e7d;
+  font-weight: bold;
   border: 2px solid #dee2e6;
   width: 170px;
 
@@ -114,5 +117,4 @@
 
 .btn-secondary:hover {
   border-color:#701e7d;
-  color: #7b2cbf;
 }

@@ -42,22 +42,16 @@ define(
       };
 
 
-
-
-      // At the start of your viewModel constructor
       var busyContext = Context.getContext(context.element).getBusyContext();
       var options = { "description": "Web Component Startup - Waiting for data" };
       self.busyResolve = busyContext.addBusyState(options);
 
       self.composite = context.element;
 
-      // Example observable
       self.messageText = ko.observable('Hello from account-comp');
 
-      // Localized resources
       self.res = componentStrings['account-comp'];
 
-      // Expose context properties
       self.properties = context.properties;
 
 
@@ -72,21 +66,27 @@ define(
 
       self.cnicNumber = ko.observable('');
       self.cnicError = ko.observable('');
-      OnboardingStore.cnic = self.cnicNumber;
-      console.log(OnboardingStore.cnic);
 
-      // Automatically check CNIC validity
-      self.isCNICValid = ko.computed(() => {
-        const cleanCNIC = self.cnicNumber().replace(/-/g, '');
-        return cleanCNIC.length === 13 && /^[0-9]{13}$/.test(cleanCNIC);
+      if (OnboardingStore.cnic) {
+        console.log("Reloading CNIC from OnboardingStore:", OnboardingStore.cnic);
+        self.cnicNumber(OnboardingStore.cnic);
+      }
+
+      self.cnicNumber.subscribe(function (newVal) {
+        OnboardingStore.cnic = newVal;
+        console.log("CNIC persisted:", newVal);
       });
 
-      // Format CNIC as user types and disallow alphabets or special chars
-      self.formatCNIC = function (_, event) {
-        let value = event.target.value.replace(/[^0-9]/g, ''); // remove alphabets & special chars
-        if (value.length > 13) value = value.slice(0, 13);     // max 13 digits
+      self.isCNICValid = ko.computed(() => {
+        const value = self.cnicNumber ? self.cnicNumber() : ''; 
+  const cleanCNIC = typeof value === 'string' ? value.replace(/-/g, '') : '';
+  return cleanCNIC.length === 13 && /^[0-9]{13}$/.test(cleanCNIC);
+      });
 
-        // add dashes at correct positions (5 and 12)
+      self.formatCNIC = function (_, event) {
+        let value = event.target.value.replace(/[^0-9]/g, ''); 
+        if (value.length > 13) value = value.slice(0, 13);     
+
         let formatted = '';
         for (let i = 0; i < value.length; i++) {
           formatted += value[i];
@@ -95,7 +95,6 @@ define(
 
         self.cnicNumber(formatted);
 
-        // Validation message handling
         if (value.length < 13) {
           self.cnicError('CNIC must be 13 digits long.');
         } else {
@@ -103,49 +102,38 @@ define(
         }
       };
 
-      // Validate on Next button click
-      // self.validateAndNext = function () {
-      //   const cleanCNIC = self.cnicNumber().replace(/-/g, '');
-      //   if (cleanCNIC.length !== 13) {
-      //     self.cnicError('Please enter a valid 13-digit CNIC number.');
-      //     return;
-      //   }
-      //   self.cnicError('');
-        
-      //   self.goToDetails(); // Proceed if valid
-      // };
       self.validateAndNext = function () {
   const cleanCNIC = self.cnicNumber().replace(/-/g, '');
 
-  // ✅ Step 1: Frontend Validation
   if (cleanCNIC.length !== 13 || !/^[0-9]{13}$/.test(cleanCNIC)) {
     self.cnicError('Please enter a valid 13-digit CNIC number.');
     return;
   }
 
-  self.cnicError(''); // clear frontend error
+  self.cnicError(''); 
 
-  // ✅ Step 2: Backend API Call
   axios.post(`http://localhost:8080/api/onboarding/verify-cnic`, { cnic: cleanCNIC })
     .then(response => {
-      console.log("✅ CNIC Verification Response:", response.data);
+      console.log("CNIC Verification Response:", response.data);
 
-      // ✅ Backend returns full user object if valid
-      if (response.status === 200 && response.data && response.data.cnic) {
-        // Save CNIC globally for future screens
-        OnboardingStore.cnic = self.cnicNumber();
+      if (response.status === 200 && response.data.exists === true) {
+         OnboardingStore.user = response.data;
 
-        // Proceed to next screen
+      OnboardingStore.userId = response.data.id;
+
+      OnboardingStore.cnic = self.cnicNumber();
+      
+
+      console.log("Stored userId:", OnboardingStore.userId);
+
         self.goToDetails();
       } else {
-        // Fallback if unexpected response
         self.cnicError('CNIC not found in records.');
       }
     })
     .catch(error => {
-      console.error("❌ Error verifying CNIC:", error);
+      console.error("Error verifying CNIC:", error);
 
-      // ✅ Display actual backend error message if available
       if (error.response) {
         const msg = typeof error.response.data === 'string'
           ? error.response.data
@@ -157,46 +145,7 @@ define(
         self.cnicError('Unexpected error occurred.');
       }
     });
-};
-
-      // ✅ Validate on Next button click + backend verification
-// self.validateAndNext = function () {
-//   const cleanCNIC = self.cnicNumber().replace(/-/g, '');
-
-//   // Step 1: Frontend Validation
-//   if (cleanCNIC.length !== 13 || !/^[0-9]{13}$/.test(cleanCNIC)) {
-//     self.cnicError('Please enter a valid 13-digit CNIC number.');
-//     return;
-//   }
-
-//   self.cnicError(''); // clear frontend error
-
-//   // Step 2: Backend API Call
-//   axios.post(`http://localhost:8080/api/onboarding/verify-cnic`, { cnic: cleanCNIC })
-
-//     .then(response => {
-//       console.log("CNIC Verification Response:", response.data);
-
-//       // Assuming your API returns user object if valid or null if invalid
-//       if (response.data && response.data.cnic) {
-//         // Save CNIC globally for future screens
-//         OnboardingStore.cnic = self.cnicNumber();
-
-//         // Proceed to next screen
-//         self.goToDetails();
-//       } else {
-//         self.cnicError('CNIC not found in records.');
-//       }
-//     })
-//     .catch(error => {
-//       console.error("Error verifying CNIC:", error);
-//       self.cnicError('Server error. Please try again.');
-//     });
-// };
-
-
-      // Once all startup and async activities have finished
-      self.busyResolve();
+};      self.busyResolve();
     }
 
 

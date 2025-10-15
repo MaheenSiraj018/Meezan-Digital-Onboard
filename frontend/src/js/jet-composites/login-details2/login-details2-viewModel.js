@@ -12,7 +12,6 @@ define(
 
       self.composite = context.element;
 
-      // Observables
       self.password = ko.observable('');
       self.rePassword = ko.observable('');
       self.passwordsMatch = ko.observable(false);
@@ -20,14 +19,12 @@ define(
       self.isFormValid = ko.observable(false);
       self.passwordStrength = ko.observable('');
 
-      // Validation for Password Rules
       self.isPasswordValid = ko.computed(function () {
         const pass = self.password();
         const regex = /^(?=.*[a-zA-Z])(?=.*[0-9])[A-Za-z0-9!@#$%^&*()_+=-]{8,}$/;
         return regex.test(pass);
       });
 
-      // Check if both passwords match
       self.password.subscribe(checkPasswordMatch);
       self.rePassword.subscribe(checkPasswordMatch);
 
@@ -46,29 +43,67 @@ define(
         }
       }
 
-      // Enable “Next” button only if form is valid
       self.isFormValid = ko.computed(function () {
         return self.isPasswordValid() && self.password() === self.rePassword();
       });
 
-      // Button Handlers
+
       self.goToTerms = function () {
         if (!self.isFormValid()) {
           alert("Please make sure your password meets all requirements and both match.");
           return;
         }
-        context.element.dispatchEvent(new CustomEvent('onNext', { bubbles: true }));
+
+        console.log("Global Store before Create Account:", OnboardingStore);
+        const userId = OnboardingStore.userId;
+        const username = OnboardingStore.username;
+        const password = self.password();
+
+        if (!userId || !username) {
+          alert("Missing user information. Please go back and verify previous steps.");
+          return;
+        }
+
+        const payload = {
+          userId: userId,
+          username: username,
+          password: password
+        };
+
+        console.log("Sending Create Account Request:", payload);
+        console.log("Global Store before Create Account:", OnboardingStore);
+
+        axios.post('http://localhost:8080/api/onboarding/create-account', payload)
+          .then(response => {
+            console.log("Account Created Successfully:", response.data);
+
+            OnboardingStore.user = response.data;
+
+            context.element.dispatchEvent(new CustomEvent('onNext', { bubbles: true }));
+          })
+          .catch(error => {
+            console.error("Error creating account:", error);
+
+            if (error.response) {
+              const msg = typeof error.response.data === 'string'
+                ? error.response.data
+                : error.response.data.message || 'Account creation failed';
+              alert(`${msg}`);
+            } else {
+              alert("Server error. Please try again later.");
+            }
+          });
       };
+
       self.password.subscribe(function (newValue) {
         evaluatePasswordStrength(newValue);
         checkPasswordMatch();
       });
 
-      // Function to evaluate strength
       function evaluatePasswordStrength(password) {
         if (!password) {
           self.passwordStrength('');
-          updateProgressBar(''); // resets bar when empty
+          updateProgressBar('');
           return;
         }
 
@@ -92,7 +127,6 @@ define(
         updateProgressBar(strength);
       }
 
-      // Validation for Password Rules (still here)
       self.isPasswordValid = ko.computed(function () {
         const pass = self.password();
         const regex = /^(?=.*[a-zA-Z])(?=.*[0-9])[A-Za-z0-9!@#$%^&*()_+=-]{8,}$/;
@@ -110,19 +144,17 @@ define(
       function updateProgressBar(strength) {
         const segments = document.querySelectorAll('#progressBar .progress-segment-password');
 
-        // Always clear all first
         segments.forEach(seg => seg.classList.remove('filled'));
 
-        // Handle completely empty input
         if (!strength || strength.trim() === '') {
-          return; // leave progress bar empty
+          return; 
         }
 
         let fillCount = 0;
 
-        if (strength === 'Weak') fillCount = 2;       // Start typing → 2 filled
-        else if (strength === 'Medium') fillCount = 3; // Medium → +1
-        else if (strength === 'Strong') fillCount = 5; // Strong → full
+        if (strength === 'Weak') fillCount = 2;       
+        else if (strength === 'Medium') fillCount = 3; 
+        else if (strength === 'Strong') fillCount = 5; 
 
         for (let i = 0; i < fillCount; i++) {
           segments[i].classList.add('filled');
@@ -133,9 +165,11 @@ define(
       self.goBacktoLoginDetails = function () {
         context.element.dispatchEvent(new CustomEvent('onBack', { bubbles: true }));
       };
-      self.togglePassword = function (elementId) {
-        const input = document.getElementById(elementId);
-        const btn = input.nextElementSibling;
+      self.togglePassword = function (inputId, btnId) {
+        const input = document.getElementById(inputId);
+        const btn = document.getElementById(btnId);
+        if (!input || !btn) return; 
+
         if (input.type === "password") {
           input.type = "text";
           btn.textContent = "HIDE";

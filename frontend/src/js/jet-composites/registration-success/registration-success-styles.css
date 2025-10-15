@@ -106,7 +106,54 @@
   transform: translateY(0);
 }
 
-/* Responsive Design */
+.error-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; 
+  
+  /* background-color: #f9e0fd; */
+  background-color: rgb(248, 215, 255,0.4);
+  border: 1px solid #e098eb;
+  
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  
+  padding: 10px 30px;
+  margin: 0 auto; 
+  margin-top: 30vh;
+  width: fit-content; 
+  text-align: center;
+}
+
+.error-icon {
+  font-size: 20px;
+  color: rgb(175, 169, 169);
+  margin: 0;
+}
+
+.error-title {
+  color: #d32f2f;
+  font-size: 18px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.retry-button {
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+.retry-button:hover {
+  background-color: #b71c1c;
+}
+
 @media (max-width: 768px) {
   .registration-success-content {
     padding: 50px 25px 30px 25px;

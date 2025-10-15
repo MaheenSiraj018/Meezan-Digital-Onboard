@@ -4,13 +4,9 @@
   as shown at https://oss.oracle.com/licenses/upl/
 
 -->
-
-<!-- views/account.html -->
 <div class="account-section" id="div1">
-  <!-- Section Title -->
   <h2 class="section-title">Select Account Type</h2>
 
-  <!-- Section Tabs (Account Types) -->
   <div class="account-type-tabs">
     <button class="tab-button-acc" data-bind="click: showIndividual, css: { active: selectedView() === 'individual' }">
       <div class="tab-icon">
@@ -60,16 +56,12 @@
     </button>
 
 
-
-    <!-- Individual Section -->
-
     <div class="cnic-section" data-bind="if: selectedView() === 'individual'">
       <div class="cnic-input-container">
         <label for="cnicInput" class="cnic-label1">CNIC Number</label>
         <input type="text" id="cnicInput" class="cnic-input" placeholder="XXXXX-XXXXXXX-X" maxlength="15"
           data-bind="value: cnicNumber, event: { input: formatCNIC }, valueUpdate: 'afterkeydown'">
 
-        <!-- Error message div -->
         <div class="error-message-cnic" data-bind="text: cnicError, css: { visible: cnicError }"></div>
 
         <p class="cnic-help-text">Please enter your 13-digit CNIC Number</p>
@@ -81,7 +73,6 @@
         </div>
       </div>
 
-      <!-- CNIC Helper Card -->
       <div class="cnic-helper-card">
         <img src="../../css/images/nic.svg" alt="CNIC Sample" class="cnic-sample">
         <div>
@@ -102,18 +93,6 @@
           <button type="button" class="btn btn-primary" data-bind="click: goToDetails">Next</button>
         </div>
       </div>
-
-
-
     </div>
-
   </div>
-
-
-
-
-
-
-
-
 </div>

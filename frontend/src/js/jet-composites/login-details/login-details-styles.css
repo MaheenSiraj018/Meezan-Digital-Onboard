@@ -97,7 +97,6 @@
     font-size: 22px;       
 }
 
-/* Navigation Buttons */
 .navigation-buttons-login {
   margin-top: 20px;
   display: flex;
@@ -125,6 +124,8 @@
 .btn-primary {
   background:#701e7d;
   color: white;
+  font-weight: bold;
+
   width: 260px;
 }
 
@@ -143,6 +144,8 @@
 .btn-secondary {
   background: white;
   color: #6c757d;
+  font-weight: bold;
+  color: #701e7d;
   border: 2px solid #dee2e6;
   width: 170px;
 
@@ -150,11 +153,9 @@
 
 .btn-secondary:hover {
   border-color:#701e7d;
-  color: #7b2cbf;
 }
 
 
-/* Input + icons */
 .username-input-wrapper {
   position: relative;
   display: inline-block;

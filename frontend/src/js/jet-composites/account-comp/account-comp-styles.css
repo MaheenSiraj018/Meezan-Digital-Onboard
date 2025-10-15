@@ -14,7 +14,6 @@
   font-family: sans-serif;
 }
 
-/* Account Tabs section */
 .account-type-tabs {
   display: flex;
   gap: 3px;
@@ -59,7 +58,6 @@
   color: #6c757d;
 }
 
-/* Active state */
 .tab-button-acc.active {
   border-color: #701e7d;
   background: #fcedfe; 
@@ -67,23 +65,19 @@
   border-bottom: 3px solid #701e7d;
 }
 
-/* Icon container */
 .tab-icon {
   margin-bottom: 0px;
 }
 
-/* Default (outline) icon */
 .icon {
   width: 24px;
   height: 24px;
 }
 
-/* Hide filled icon by default */
 .icon.active {
   display: none;
 }
 
-/* When active: show filled, hide outline */
 .tab-button-acc.active .icon.active {
   display: inline-block;
 }
@@ -92,7 +86,6 @@
   display: none;
 }
 
-/* Text styling */
 .tab-button-acc span {
   font-size: 13px;
   font-weight: 500;
@@ -100,7 +93,6 @@
 }
 
 
-/* CNIC Section */
 .cnic-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -147,7 +139,6 @@
   font-family: sans-serif;
 }
 
-/* CNIC Helper Card */
 .cnic-helper-card {
   background: white;
   border-radius: 12px;
@@ -157,8 +148,7 @@
   justify-content: center;
   text-align: center;
   padding: 10px;
-  margin-right: 20px;
-  width: 80%;
+  width: 70%;
   height: 100%;
 }
 .cnic-find{
@@ -188,7 +178,6 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Basic Section */
 .basic-section{
 display: grid;
   grid-template-columns: 1fr 1fr;
@@ -202,7 +191,6 @@ display: grid;
   flex-direction: column;
 }
 
-/* Navigation Buttons */
 .navigation-buttons-acc {
   margin-top: 40px;
   margin-right: 3px;
@@ -231,6 +219,8 @@ display: grid;
 .btn-primary {
   background:#701e7d;
   color: white;
+  font-weight: bold;
+
   width: 260px;
 }
 
@@ -248,7 +238,8 @@ display: grid;
 
 .btn-secondary {
   background: white;
-  color: #6c757d;
+  color: #701e7d;
+  font-weight: bold;
   border: 2px solid #dee2e6;
   width: 170px;
 
@@ -256,7 +247,6 @@ display: grid;
 
 .btn-secondary:hover {
   border-color:#701e7d;
-  color: #7b2cbf;
 }
 
 .error-message-cnic {

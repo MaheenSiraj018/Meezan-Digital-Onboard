@@ -1,54 +1,76 @@
-define(['knockout', 'ojs/ojcore', 'ojs/ojknockout'],
-  function(ko, oj) {
+'use strict';
+define([
+  'knockout',
+  'ojs/ojcore',
+  'ojs/ojknockout',
+  'ojs/ojrouter' 
+], function (ko, oj, Router) {
+
+  function RegistrationSuccessViewModel() {
+    var self = this;
+
     
-    function RegistrationSuccessViewModel() {
-      var self = this;
-      
-      // Initialize with default structure
-      self.registrationData = ko.observable({
-        success: {
-          title: '',
-          subtitle: '',
-          username: { label: '', value: '' },
-          accountTitle: { label: '', value: '' },
-          accountNumber: { label: '', value: '' },
-          buttonText: ''
-        }
-      });
-      
-      // Load JSON data
-      self.loadData = function() {
-        fetch('js/jet-composites/registration-success/registration-data.json')
-          .then(function(response) {
-            return response.json();
-          })
-          .then(function(data) {
-            self.registrationData(data);
-          })
-          .catch(function(error) {
-            console.error('Error loading registration data:', error);
-          });
-      };
-      
-      // Load data on initialization
-      self.loadData();
-      
-      // Handle continue button click
-      self.handleContinue = function() {
-        console.log('Continue to Log In clicked');
- 
-      };
-      
-      // Optional: Method to update data dynamically
-      self.updateAccountDetails = function(username, accountTitle, accountNumber) {
-        var currentData = self.registrationData();
-        currentData.success.username.value = username;
-        currentData.success.accountTitle.value = accountTitle;
-        currentData.success.accountNumber.value = accountNumber;
-        self.registrationData(currentData);
-      };
-    }
+    self.registrationData = ko.observable({
+      success: {
+        title: 'Registration Successful!',
+        subtitle: 'Your account has been created successfully.',
+        username: { label: 'Username', value: '' },
+        accountTitle: { label: 'Account Title', value: '' },
+        accountNumber: { label: 'Account Number', value: '' },
+        buttonText: 'Continue to Login'
+      }
+    });
+
+    self.isError = ko.observable(false);
+    self.errorMessage = ko.observable('');
+
+    self.loadUserData = function () {
+      const userId = window.OnboardingStore?.userId;
+      console.log("Global userId for review:", userId);
+
+      if (!userId) {
+        console.error("Missing userId in global store");
+        self.showError("Digital Onboarding failed. Proceed to register again.");
+        return;
+      }
+
+      const url = `http://localhost:8080/api/onboarding/review/${userId}`;
+      console.log("📡 Fetching user details from:", url);
+
+      axios.get(url)
+        .then(function (response) {
+          console.log("Review Data:", response.data);
+
+          const user = response.data;
+
+          if (!user || !user.accountNumber || !user.name) {
+            self.showError("Digital Onboarding failed. Proceed to register again.");
+            return;
+          }
+
+          const updated = self.registrationData();
+          updated.success.username.value = user.username || 'N/A';
+          updated.success.accountTitle.value = user.name || 'N/A';
+          updated.success.accountNumber.value = user.accountNumber || 'N/A';
+          self.registrationData(updated);
+
+          self.isError(false); 
+        })
+        .catch(function (error) {
+          console.error("Error loading user review data:", error);
+          self.showError("Digital Onboarding failed. Proceed to register again.");
+        });
+    };
+
+    self.showError = function (message) {
+      self.errorMessage(message);
+      self.isError(true);
+    };
+
     
-    return RegistrationSuccessViewModel;
+
+    self.loadUserData();
   }
-);
+
+  return RegistrationSuccessViewModel;
+});

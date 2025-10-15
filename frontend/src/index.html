@@ -26,16 +26,25 @@
       </div>
     </div>
   </div>
-<script>
+  <script>
     window.OnboardingStore = {
       cnic: null,
       accountNumber: null,
       user: null,
       username: null,
-      userId: null
+      userId: null,
+
+      clear() {
+        this.userId = null;
+        this.cnic = null;
+        this.accountNumber = null;
+        this.username = null;
+        this.user = null;
+        console.log("OnboardingStore cleared");
+      }
     };
   </script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
   <script src="js/libs/require/require.js"></script>
 
