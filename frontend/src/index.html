@@ -6,6 +6,7 @@
   <title>Meezan Digital OnBoarding</title>
   <link rel="stylesheet" href="css/app.css">
   <link rel="icon" href="css/images/meezan_logo.png" type="image/x-icon" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body id="globalBody" class="oj-web-applayout-body">
@@ -27,25 +28,29 @@
     </div>
   </div>
   <script>
-    window.OnboardingStore = {
-      cnic: null,
-      accountNumber: null,
-      user: null,
-      username: null,
-      userId: null,
 
-      clear() {
-        this.userId = null;
-        this.cnic = null;
-        this.accountNumber = null;
-        this.username = null;
-        this.user = null;
-        console.log("OnboardingStore cleared");
-      }
-    };
-  </script>
+window.OnboardingStore = {
+  cnic: null,              
+  accountNumber: null,     
+  account: null,            
+  username: null,          
+  accountStatus: null,      
+  password: null,
+  
+  clear() {
+    this.cnic = null;
+    this.accountNumber = null;
+    this.username = null;
+    this.account = null;
+    this.accountStatus = null;
+    this.password = null;
+    console.log("OnboardingStore cleared");
+  }
+};
+</script>
+
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/bcryptjs@2.4.3/dist/bcrypt.min.js"></script>
   <script src="js/libs/require/require.js"></script>
 
   <script src="js/main.js"></script>

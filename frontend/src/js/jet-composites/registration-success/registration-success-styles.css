@@ -112,7 +112,6 @@
   justify-content: center;
   gap: 10px; 
   
-  /* background-color: #f9e0fd; */
   background-color: rgb(248, 215, 255,0.4);
   border: 1px solid #e098eb;
   
@@ -160,11 +159,11 @@
   }
 
   .success-title {
-    font-size: 24px;
+    font-size: 26px;
   }
 
   .success-subtitle {
-    font-size: 13px;
+    font-size: 16px;
   }
 
   .detail-value {

@@ -86,8 +86,6 @@ define(
         }
       };
 
-
-      
       self.validateAndNextAcc = function () {
         const cleanAcc = self.accountNumber().replace(/-/g, '');
         const cnic = OnboardingStore.cnic;
@@ -104,43 +102,29 @@ define(
 
         self.accError('');
 
-        axios.post('http://localhost:8080/api/onboarding/verify-account', { accountNumber: cleanAcc })
-          .then(accountRes => {
-            console.log("Account Verification Response:", accountRes.data);
-
-            if (accountRes.status === 200 && accountRes.data.exists === true) {
-              
-              return axios.post('http://localhost:8080/api/onboarding/verify-user', {
-                cnic: cnic,
-                accountNumber: cleanAcc
-              });
-            } else {
-              
-              const msg = accountRes.data.message || 'Account not found.';
-              self.accError(msg);
-              return Promise.reject(new Error(msg));
-            }
-          })
+        axios.post('http://localhost:8080/api/onboarding/verify-user', {
+          cnic: cnic,
+          accountNumber: cleanAcc
+        })
           .then(userRes => {
             console.log("Verify User Response:", userRes.data);
             const user = userRes.data;
 
             if (user.verified === false) {
-              
+
               self.accError(user.message || 'CNIC and Account Number do not match.');
               return;
             }
 
             if (user.userAlreadyExists) {
-              
+
               self.accError("This user is already registered. Please log in instead.");
               return;
             }
 
-           
-            OnboardingStore.accountNumber = self.accountNumber();
-            OnboardingStore.user = user;
-            OnboardingStore.userId = userRes.data.userId || OnboardingStore.userId;
+
+            OnboardingStore.accountNumber = cleanAcc;
+            OnboardingStore.accountStatus = 'unregistered';
 
             self.goToLoginDetails();
           })
@@ -155,20 +139,15 @@ define(
             } else if (error.request) {
               self.accError('No response from server. Please try again.');
             } else if (error.message) {
-              self.accError(error.message); 
+              self.accError(error.message);
             } else {
               self.accError('Unexpected error occurred.');
             }
           });
       };
 
-
-
       self.res = componentStrings['account-details'];
       self.busyResolve();
     };
-
-
-
     return AccountDetailsComponentModel;
   });

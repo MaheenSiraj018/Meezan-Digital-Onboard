@@ -19,13 +19,45 @@ define(
         self.composite = context.element;
 
         self.goToRegistration = function(){
-        console.log(context.element);
-        
-        
-        context.element.dispatchEvent(
-          new CustomEvent('onNext', {bubbles: true})
-        )
+        const payload = {
+        cnic: OnboardingStore.cnic,    
+        username: OnboardingStore.username,
+        password: OnboardingStore.password  
+    };
+
+    if (!payload.cnic || !payload.username || !payload.password) {
+        alert("Missing user information. Please go back and complete all required fields.");
+        return;
+    }
+
+    console.log("Sending Create Account Request:", payload);
+    console.log("Global Store before Create Account:", OnboardingStore);
+
+    axios.post('http://localhost:8080/api/onboarding/create-user', payload)
+        .then(response => {
+            console.log("Account Created Successfully:", response.data);
+            
+            OnboardingStore.accountStatus = "REGISTERED";
+            
+            delete OnboardingStore.password;
+            
+            context.element.dispatchEvent(new CustomEvent('onNext', { bubbles: true }));
+        })
+        .catch(error => {
+            console.error("Error creating account:", error);
+            self.isLoading(false);
+            
+            if (error.response) {
+                const msg = typeof error.response.data === 'string' 
+                    ? error.response.data 
+                    : error.response.data.message || 'Account creation failed';
+                alert(`Error: ${msg}`);
+            } else {
+                alert("Server error. Please try again later.");
+            }
+        });
       }
+      
       self.goBacktoLoginDetails2 = function(){
         console.log(context.element);
         
@@ -35,16 +67,10 @@ define(
         )
       }
 
-        //Example observable
         self.messageText = ko.observable('Hello from terms-conditions');
         self.properties = context.properties;
         self.res = componentStrings['terms-conditions'];
-        // Example for parsing context properties
-        // if (context.properties.name) {
-        //     parse the context properties here
-        // }
-
-        //Once all startup and async activities have finished, relocate if there are any async activities
+        
         self.busyResolve();
     };
     

@@ -7,7 +7,7 @@
 
 'use strict';
 define(
-  ['knockout','ojL10n!./resources/nls/account-comp-strings', 'ojs/ojcontext', 'ojs/ojknockout'],
+  ['knockout', 'ojL10n!./resources/nls/account-comp-strings', 'ojs/ojcontext', 'ojs/ojknockout'],
   function (ko, componentStrings, Context) {
 
     function AccountCompViewModel(context) {
@@ -78,14 +78,14 @@ define(
       });
 
       self.isCNICValid = ko.computed(() => {
-        const value = self.cnicNumber ? self.cnicNumber() : ''; 
-  const cleanCNIC = typeof value === 'string' ? value.replace(/-/g, '') : '';
-  return cleanCNIC.length === 13 && /^[0-9]{13}$/.test(cleanCNIC);
+        const value = self.cnicNumber ? self.cnicNumber() : '';
+        const cleanCNIC = typeof value === 'string' ? value.replace(/-/g, '') : '';
+        return cleanCNIC.length === 13 && /^[0-9]{13}$/.test(cleanCNIC);
       });
 
       self.formatCNIC = function (_, event) {
-        let value = event.target.value.replace(/[^0-9]/g, ''); 
-        if (value.length > 13) value = value.slice(0, 13);     
+        let value = event.target.value.replace(/[^0-9]/g, '');
+        if (value.length > 13) value = value.slice(0, 13);
 
         let formatted = '';
         for (let i = 0; i < value.length; i++) {
@@ -103,49 +103,38 @@ define(
       };
 
       self.validateAndNext = function () {
-  const cleanCNIC = self.cnicNumber().replace(/-/g, '');
+        const cleanCNIC = self.cnicNumber().replace(/-/g, '');
 
-  if (cleanCNIC.length !== 13 || !/^[0-9]{13}$/.test(cleanCNIC)) {
-    self.cnicError('Please enter a valid 13-digit CNIC number.');
-    return;
-  }
+        if (cleanCNIC.length !== 13 || !/^[0-9]{13}$/.test(cleanCNIC)) {
+          self.cnicError('Please enter a valid 13-digit CNIC number.');
+          return;
+        }
 
-  self.cnicError(''); 
+        self.cnicError('');
 
-  axios.post(`http://localhost:8080/api/onboarding/verify-cnic`, { cnic: cleanCNIC })
-    .then(response => {
-      console.log("CNIC Verification Response:", response.data);
+        axios.post(`http://localhost:8080/api/onboarding/verify-cnic`, { cnic: cleanCNIC })
+          .then(response => {
+            const data = response.data;
+            console.log("CNIC Verification Response:", data);
 
-      if (response.status === 200 && response.data.exists === true) {
-         OnboardingStore.user = response.data;
+            if (data.canProceed) {
+              OnboardingStore.cnic = cleanCNIC;
 
-      OnboardingStore.userId = response.data.id;
+              OnboardingStore.account = null;
+              OnboardingStore.username = null;
+              OnboardingStore.accountStatus = null;
 
-      OnboardingStore.cnic = self.cnicNumber();
-      
-
-      console.log("Stored userId:", OnboardingStore.userId);
-
-        self.goToDetails();
-      } else {
-        self.cnicError('CNIC not found in records.');
-      }
-    })
-    .catch(error => {
-      console.error("Error verifying CNIC:", error);
-
-      if (error.response) {
-        const msg = typeof error.response.data === 'string'
-          ? error.response.data
-          : error.response.data.message || 'Verification failed';
-        self.cnicError(msg);
-      } else if (error.request) {
-        self.cnicError('No response from server. Please try again.');
-      } else {
-        self.cnicError('Unexpected error occurred.');
-      }
-    });
-};      self.busyResolve();
+              self.goToDetails();
+            } else {
+              self.cnicError(data.message);
+            }
+          })
+          .catch(error => {
+            console.error("Network error verifying CNIC:", error);
+            self.cnicError('Server error, please try again.');
+          });
+      };
+      self.busyResolve();
     }
 
 

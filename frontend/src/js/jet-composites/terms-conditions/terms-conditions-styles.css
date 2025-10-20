@@ -118,3 +118,11 @@
 .btn-secondary:hover {
   border-color:#701e7d;
 }
+
+
+@media (max-width: 1200px){
+  .tandc-section {
+    margin-top: -30px;
+    padding-top: 0;
+  }
+}

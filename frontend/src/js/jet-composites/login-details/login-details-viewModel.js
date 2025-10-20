@@ -9,7 +9,7 @@ define(
   ['knockout', 'ojL10n!./resources/nls/login-details-strings', 'ojs/ojcontext', 'ojs/ojknockout'], function (ko, componentStrings, Context) {
 
 
-    function ExampleComponentModel(context) {
+    function LoginComponentModel(context) {
       var self = this;
 
       function debounce(fn, delay) {
@@ -48,15 +48,15 @@ define(
         console.log("Username persisted:", newVal);
       });
 
-      const userId = window.OnboardingStore?.userId;
-      if (!OnboardingStore.username && userId) {
-        console.log("📡 Fetching contact number as default username for:", userId);
-        axios.get(`http://localhost:8080/api/onboarding/user-info/${userId}`)
+      const cnic = window.OnboardingStore?.cnic;
+      if (!OnboardingStore.username && cnic) {
+        console.log("📡 Fetching contact number as default username for:", cnic);
+        axios.get(`http://localhost:8080/api/onboarding/user-info/${cnic}`)
           .then(response => {
             const contactNo = response.data.contactNumber;
             if (contactNo) {
-              self.username(contactNo);          
-              OnboardingStore.username = contactNo; 
+              self.username(contactNo);
+              OnboardingStore.username = contactNo;
               console.log("Default username (contact number):", contactNo);
               self.checkUsernameAvailability(contactNo);
             }
@@ -101,6 +101,13 @@ define(
       self.validateUsername = function (_, event) {
         let value = event.target.value.trim();
 
+        if (/\s/.test(value)) {
+          self.usernameMessage('Username cannot contain spaces.');
+          self.isUsernameValid(false);
+          self.isUsernameInvalid(true);
+          return; 
+        }
+
         if (value.length > 16) {
           value = value.substring(0, 16);
           event.target.value = value;
@@ -116,5 +123,5 @@ define(
     }
 
 
-    return ExampleComponentModel;
+    return LoginComponentModel;
   });

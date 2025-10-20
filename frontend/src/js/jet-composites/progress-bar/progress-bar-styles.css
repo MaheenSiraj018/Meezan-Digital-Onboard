@@ -7,142 +7,180 @@
 	 }
 */
 
-        .progress-container {
-            margin-top: 30px !important;
-            padding: 0 10px !important;
-        }
+.progress-container {
+    margin-top: 30px !important;
+    padding: 0 10px !important;
+}
 
-        .progress-bar {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+.progress-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-            position: relative;
-            margin-bottom: 20px;
-            
-        }
+    position: relative;
+    margin-bottom: 20px;
 
-        .progress-step {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            position: relative;
-            flex: 1;
-        }
+}
 
-        .step-circle-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-        }
+.progress-step {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    flex: 1;
+}
 
-        .step-circle {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 18px;
-            color: rgb(75, 72, 72);
-            background-color: #e0e0e0;
-            border: 1px solid rgb(75, 72, 72);
-            position: relative;
-            z-index: 2;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-        }
+.step-circle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
 
-        .step-circle.completed {
-            background-color: #27C446;
-            color: white;
-            border: 1px solid white;
-        }
+.step-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    color: rgb(75, 72, 72);
+    background-color: #e0e0e0;
+    border: 1px solid rgb(75, 72, 72);
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
 
-        .step-circle.active {
-            background-color:  #e0e0e0;
-        }
+.step-circle.completed {
+    background-color: #27C446;
+    color: white;
+    border: 1px solid white;
+}
 
-        /* Active indicator line under the circle */
-        .circle-active-line {
-            height: 3px;
-            background-color: #27C446;
-            width: 100%;
-            margin-top: 8px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            border: 1px solid #27C446;
-            border-radius: 3px;
-        }
+.step-circle.active {
+    background-color: #e0e0e0;
+}
 
-        .circle-active-line.show {
-            opacity: 1;
-        }
+.circle-active-line {
+    height: 3px;
+    background-color: #27C446;
+    width: 100%;
+    margin-top: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border: 1px solid #27C446;
+    border-radius: 3px;
+}
 
-        .step-content {
-            display: flex;
-            flex-direction: column;
-            margin-left: 10px;
-            flex: 1;
-        }
+.circle-active-line.show {
+    opacity: 1;
+}
 
-        .step-label {
-            font-size: 14px;
-            font-weight: 500;
-            color: #666;
-            white-space: nowrap !important;
-            text-align: left;
-        }
+.step-content {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    flex: 1;
+}
 
-        .step-label.completed {
-            color: #27C446;
-        }
+.step-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+    white-space: nowrap !important;
+    text-align: left;
+}
 
-        .step-label.active {
-            color: #333;
-        }
+.step-label.completed {
+    color: #27C446;
+}
 
-        /* Connecting line between steps */
-        .connecting-line {
-            height: 3px;
-            width: 70px;
-            background-color: #e0e0e0c5;
-            border: 1px solid #e0e0e0c5 ;
-            border-radius: 3px;
-            flex: 1;
-            margin-left: 15px;
-            margin-right: 15px;
-            margin-top: 18px;
-            margin-bottom: 10px;
-            transition: all 0.3s ease;
-        }
+.step-label.active {
+    color: #333;
+}
 
-        .progress-step:last-child .connecting-line {
-            display: none;
-        }
+.connecting-line {
+    height: 3px;
+    width: 70px;
+    background-color: #e0e0e0c5;
+    border: 1px solid #e0e0e0c5;
+    border-radius: 3px;
+    flex: 1;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 18px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
 
-        .connecting-line.completed {
-            background-color: #27C446;
-        }
+.progress-step:last-child .connecting-line {
+    display: none;
+}
 
-        .content-section {
-            padding: 30px 0;
-            border-top: 2px solid #f0f0f0;
-        }
+.connecting-line.completed {
+    background-color: #27C446;
+}
 
-        .section-title {
-            font-size: 24px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 10px;
-        }
+.content-section {
+    padding: 30px 0;
+    border-top: 2px solid #f0f0f0;
+}
 
-        .section-content {
-            color: #666;
-            line-height: 1.6;
-        }
+.section-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
 
-        
-        
+.section-content {
+    color: #666;
+    line-height: 1.6;
+}
+
+
+@media (max-width: 1200px) {
+    .progress-container {
+        margin-top: 45px !important;
+        margin-left: 11px;
+        margin-right: 11px;
+    }
+
+    .progress-bar {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .progress-step {
+        flex: 0 0 auto;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .step-circle {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+
+    .connecting-line {
+        width: 45px;
+        margin: 0 5px;
+    }
+
+    .step-label {
+        font-size: 14px;
+        white-space: nowrap;
+        text-align: center;
+    }
+
+    .progress-container {
+        padding: 0 5px !important;
+        margin-top: 20px !important;
+    }
+}

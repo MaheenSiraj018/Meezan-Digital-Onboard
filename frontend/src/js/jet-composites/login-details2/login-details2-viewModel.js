@@ -1,9 +1,9 @@
 'use strict';
 define(
-  ['knockout', 'ojL10n!./resources/nls/login-details2-strings', 'ojs/ojcontext', 'ojs/ojknockout'],
+  ['knockout', 'ojL10n!./resources/nls/login-details2-strings', 'ojs/ojcontext', 'ojs/ojknockout',],
   function (ko, componentStrings, Context) {
 
-    function ExampleComponentModel(context) {
+    function LoginDetailsComponentModel(context) {
       var self = this;
 
       var busyContext = Context.getContext(context.element).getBusyContext();
@@ -34,7 +34,7 @@ define(
             self.passwordsMatch(true);
             self.matchMessage("Passwords Matched!");
           } else {
-            self.passwordsMatch(true);
+            self.passwordsMatch(false);
             self.matchMessage("Passwords do not match");
           }
         } else {
@@ -48,52 +48,32 @@ define(
       });
 
 
-      self.goToTerms = function () {
+      self.goToTerms = async function () {
         if (!self.isFormValid()) {
           alert("Please make sure your password meets all requirements and both match.");
           return;
         }
 
-        console.log("Global Store before Create Account:", OnboardingStore);
-        const userId = OnboardingStore.userId;
-        const username = OnboardingStore.username;
-        const password = self.password();
+        try {
+          const encoder = new TextEncoder();
+          const data = encoder.encode(self.password());
 
-        if (!userId || !username) {
-          alert("Missing user information. Please go back and verify previous steps.");
-          return;
+          const hashBuffer = await window.crypto.subtle.digest('SHA-256', data);
+          const hashArray = Array.from(new Uint8Array(hashBuffer));
+          const hashedPassword = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+          console.log("SHA-256 Hashed Password:", hashedPassword);
+          OnboardingStore.password = hashedPassword;
+          console.log("Global Store after password:", OnboardingStore);
+
+          context.element.dispatchEvent(new CustomEvent('onNext', { bubbles: true }));
+
+        } catch (error) {
+          console.error("Error hashing password:", error);
+          alert("Something went wrong while securing your password.");
         }
-
-        const payload = {
-          userId: userId,
-          username: username,
-          password: password
-        };
-
-        console.log("Sending Create Account Request:", payload);
-        console.log("Global Store before Create Account:", OnboardingStore);
-
-        axios.post('http://localhost:8080/api/onboarding/create-account', payload)
-          .then(response => {
-            console.log("Account Created Successfully:", response.data);
-
-            OnboardingStore.user = response.data;
-
-            context.element.dispatchEvent(new CustomEvent('onNext', { bubbles: true }));
-          })
-          .catch(error => {
-            console.error("Error creating account:", error);
-
-            if (error.response) {
-              const msg = typeof error.response.data === 'string'
-                ? error.response.data
-                : error.response.data.message || 'Account creation failed';
-              alert(`${msg}`);
-            } else {
-              alert("Server error. Please try again later.");
-            }
-          });
       };
+
 
       self.password.subscribe(function (newValue) {
         evaluatePasswordStrength(newValue);
@@ -147,14 +127,14 @@ define(
         segments.forEach(seg => seg.classList.remove('filled'));
 
         if (!strength || strength.trim() === '') {
-          return; 
+          return;
         }
 
         let fillCount = 0;
 
-        if (strength === 'Weak') fillCount = 2;       
-        else if (strength === 'Medium') fillCount = 3; 
-        else if (strength === 'Strong') fillCount = 5; 
+        if (strength === 'Weak') fillCount = 2;
+        else if (strength === 'Medium') fillCount = 3;
+        else if (strength === 'Strong') fillCount = 5;
 
         for (let i = 0; i < fillCount; i++) {
           segments[i].classList.add('filled');
@@ -168,7 +148,7 @@ define(
       self.togglePassword = function (inputId, btnId) {
         const input = document.getElementById(inputId);
         const btn = document.getElementById(btnId);
-        if (!input || !btn) return; 
+        if (!input || !btn) return;
 
         if (input.type === "password") {
           input.type = "text";
@@ -183,5 +163,5 @@ define(
       self.busyResolve();
     }
 
-    return ExampleComponentModel;
+    return LoginDetailsComponentModel;
   });

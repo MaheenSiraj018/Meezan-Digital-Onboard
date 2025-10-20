@@ -51,11 +51,11 @@
                         placeholder="Re-enter your password" data-bind="value: rePassword, valueUpdate: 'input'" />
                 </div>
                 <button id="rePasswordBtn" type="button" class="show-password-btn"
-  data-bind="click: function() { togglePassword('repasswordInput', 'rePasswordBtn') }">SHOW</button>
+                    data-bind="click: function() { togglePassword('repasswordInput', 'rePasswordBtn') }">SHOW</button>
 
             </div>
 
-            <p class="matchpass" data-bind="text: matchMessage, css: { 'show-pass': passwordsMatch }"></p>
+            <p class="matchpass" data-bind="text: matchMessage,css: passwordsMatch() ? 'show-pass' : 'show-error'"></p>
 
             <div class="navigation-buttons-password">
                 <button type="button" class="btn btn-secondary" data-bind="click: goBacktoLoginDetails">Back</button>

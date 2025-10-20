@@ -49,7 +49,7 @@
 }
 
 .tab-button{
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   text-align: center;
 }
@@ -70,7 +70,7 @@
 }
 
 .acc-label {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   color: #2c3e50;
   margin-bottom: 20px;
@@ -95,7 +95,7 @@
 }
 
 .acc-help-text {
-  font-size: 14px;
+  font-size: 15px;
   color: #6c757d;
   margin-top: 8px;
   font-family: sans-serif;
@@ -110,19 +110,20 @@
   align-items: center;
   justify-content: flex-end;
   text-align: center;
-  height: 112%;
-  width: 90%;
+  height: 108%;
+  width: 87%;
   margin-left: 0;
+  margin-top: 40px;
 }
 .acc-find{
-    font-size: 17px;
+    font-size: 18px;
     color:#701e7d;
     margin: 0;
     padding: 0;
     font-family: sans-serif;
 }
 .acc-find-text{
-    font-size: 15px;
+    font-size: 16px;
     margin: 0;
     padding: 12px;
     font-family: sans-serif;
@@ -189,6 +190,13 @@
   cursor: not-allowed;
 }
 
+.btn-secondary:disabled {
+  background: #dee2e6;
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+
 .btn-secondary {
   background: white;
   color: #701e7d;
@@ -218,4 +226,79 @@
   opacity: 1;                
 }
 
+@media (max-width: 1200px) {
 
+  .accno-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+  }
+
+  .accno-input-container {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .acc-input {
+    width: 100%;
+    max-width: 300px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+
+  }
+
+  .acc-helper-card {
+    width: 80%;
+    max-width: 300px;
+    height: auto;
+    margin: 0;
+    margin-top: 50px;
+    padding: 15px;
+  }
+
+  .acc-helper-card img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .account-type-tabs {
+    justify-content: flex-start;
+  }
+
+  .tab-button {
+    width: 48%;
+    font-size: 16px;
+    padding: 12px 8px;
+  }
+
+  .navigation-buttons-accdetails {
+    justify-content: flex-start;
+    margin-top: 30px;
+    gap: 4px;
+  }
+
+  .btn {
+    width: auto;
+    min-width: 120px;
+    font-size: 17px;
+    padding: 10px 22px;
+  }
+  .acc-label{
+    margin-bottom: 16px;
+  }
+
+  .btn-primary {
+    width: 200px;
+  }
+
+  .btn-secondary {
+    width: 140px;
+  }
+
+  .section-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+}

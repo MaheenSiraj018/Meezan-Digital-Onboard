@@ -21,30 +21,10 @@ define(
         self.properties = context.properties;
         console.log(self.properties);
         self.res = componentStrings['login-link'];
-        // Example for parsing context properties
-        // if (context.properties.name) {
-        //     parse the context properties here
-        // }
 
-        //Once all startup and async activities have finished, relocate if there are any async activities
         self.busyResolve();
     };
     
-    //Lifecycle methods - uncomment and implement if necessary 
-    //ExampleComponentModel.prototype.activated = function(context){
-    //};
-
-    //ExampleComponentModel.prototype.connected = function(context){
-    //};
-
-    //ExampleComponentModel.prototype.bindingsApplied = function(context){
-    //};
-
-    //ExampleComponentModel.prototype.disconnected = function(context){
-    //};
-
-    //ExampleComponentModel.prototype.propertyChanged = function(context){
-    //};
 
     return LoginLinkModel;
 });
